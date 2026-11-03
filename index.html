@@ -6,7 +6,7 @@
 <meta name="description" content="Nexxa Expo by Impulso: 4 ponencias para emprender en digital. Viernes 20 de noviembre, 3:00 a 8:00 p. m., Institución Universitaria Salazar y Herrera, Medellín.">
 <meta property="og:title" content="Nexxa Expo by Impulso">
 <meta property="og:description" content="Nexxa Expo by Impulso: 4 ponencias para emprender en digital. Viernes 20 de noviembre, 3:00 a 8:00 p. m., Institución Universitaria Salazar y Herrera, Medellín.">
-<meta property="og:image" content="promo-poster.jpg">
+<meta property="og:image" content="https://nexxaexpo2026.online/promo-poster.jpg">
 <title>Nexxa Expo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -843,10 +843,11 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
 .lv-btn.soon{opacity:.55;cursor:not-allowed;filter:saturate(.6)}
 .lv-btn small{font:600 10px var(--f-tech);letter-spacing:.12em;opacity:.9}
 @media (max-width:560px){.lv-btns{display:grid;grid-template-columns:minmax(0,1fr)}.lv-btn{justify-content:center}}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
 </style>
+
 </head>
 <body>
-
 <canvas id="sparks" aria-hidden="true"></canvas>
 <button class="cta-reg fab-reg" type="button" data-go-reg aria-label="Ir al registro"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Registro</button>
 <header class="hero">
@@ -997,7 +998,7 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
       </div>
     </div>
 
-    <form class="reg-form" id="regForm" novalidate hidden>
+    <form class="reg-form" id="regForm" novalidate hidden><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
       <fieldset class="fs" data-for="academica externo">
         <legend>Tus datos<small>Para enviarte la confirmación y la información del evento.</small></legend>
         <div class="fgrid">
@@ -1104,7 +1105,7 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
     </div>
     <div class="reg-banner" id="labBanner" hidden></div>
 
-    <form class="reg-form" id="labForm" novalidate>
+    <form class="reg-form" id="labForm" novalidate><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
       <fieldset class="fs">
         <legend>Tus datos<small>Para enviarte la fecha y el enlace del laboratorio.</small></legend>
         <div class="fgrid">
@@ -1202,6 +1203,14 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
 
 </main>
 
+<script>
+/* ================= REGISTRO EN GOOGLE SHEETS (sitio público) ================= */
+/* Pega aquí la URL de la aplicación web de Apps Script (termina en /exec) */
+const SHEETS_URL='https://script.google.com/macros/s/AKfycbzw9MI8VPoulLIT0RMYRn118nRiGcPMn7yRH0KqDCuTJfuAYjYeixQ9-4Tej36_3tFiEQ/exec';
+window.NXS={on:!!SHEETS_URL,
+  async post(kind,rec){const r=await fetch(SHEETS_URL,{method:'POST',body:JSON.stringify(Object.assign({kind},rec))});const j=await r.json();if(!j.ok)throw new Error(j.error||'error');return j;},
+  async count(){const r=await fetch(SHEETS_URL+'?op=count',{cache:'no-store'});const j=await r.json();return j.confirmados||0;}};
+</script>
 <script>
 /* ================= ICONOS ================= */
 const ICONS={
@@ -1409,16 +1418,17 @@ qa('input[name=etapa]').forEach(r=>r.addEventListener('change',()=>{etapa=r.valu
 const msgEl=q('#regMsg');function msg(t,cls){msgEl.textContent=t;msgEl.className='reg-msg'+(cls?' '+cls:'');}
 
 /* capacidades */
-let db=null,user=null,downloads=null,uid=null,canWrite=null,live=false;
+let db=null,user=null,downloads=null,uid=null,canWrite=null,live=false,viaSheets=false;
+function sheetsMode(){viaSheets=true;banner.hidden=true;const upd=()=>NXS.count().then(n=>{taken=n;paint();q('#sesLive').innerHTML='<span class="live-dot"></span>Cupos actualizados.';}).catch(()=>{q('#sesLive').innerHTML='<span class="live-dot off"></span>No pudimos consultar los cupos. Recarga la página.';});upd();setInterval(upd,45000);}
 const banner=q('#regBanner');function showBanner(t){banner.innerHTML=t;banner.hidden=false;}
 (async()=>{
-  if(!window.claude||!claude.use){showBanner('<b>Vista sin conexión.</b> Aquí puedes ver el formulario completo, pero los registros y los cupos en vivo solo funcionan en la página publicada.');q('#sesLive').innerHTML='<span class="live-dot off"></span>Cupos en vivo no disponibles en esta vista.';return;}
+  if(!window.claude||!claude.use){if(NXS.on){sheetsMode();return;}showBanner('<b>Vista sin conexión.</b> Aquí puedes ver el formulario completo, pero los registros y los cupos en vivo solo funcionan en la página publicada.');q('#sesLive').innerHTML='<span class="live-dot off"></span>Cupos en vivo no disponibles en esta vista.';return;}
   [db,user]=await Promise.all([claude.use('db'),claude.use('user')]);
   if(user){try{uid=await user.id();}catch(e){}try{canWrite=await user.can('data.write');}catch(e){}}
   if(db){db.collection('inscripciones/expo/a').onSnapshot(snap=>{taken=snap.size;paint();if(!live){live=true;q('#sesLive').innerHTML='<span class="live-dot"></span>Cupos en tiempo real.';}},
       ()=>{q('#sesLive').innerHTML='<span class="live-dot off"></span>No pudimos actualizar los cupos. Recarga la página.';});}
   else q('#sesLive').innerHTML='<span class="live-dot off"></span>Cupos en vivo no disponibles en esta vista.';
-  if(!db||!uid||canWrite===false)showBanner('<b>Vista de consulta.</b> Esta vista no puede guardar registros: los registros se guardan cuando la página se abre con una cuenta de la organización con permiso de edición.');
+  if((!db||!uid||canWrite===false)&&NXS.on){sheetsMode();}else if(!db||!uid||canWrite===false)showBanner('<b>Vista de consulta.</b> Esta vista no puede guardar registros: los registros se guardan cuando la página se abre con una cuenta de la organización con permiso de edición.');
   let admin=false;try{admin=!!(user&&await user.canEdit());}catch(e){}
   if(admin&&db){q('#regAdmin').hidden=false;loadAdmin();}
   claude.use('downloads').then(d=>{downloads=d;if(!d)q('#admCsv').hidden=true;});
@@ -1432,6 +1442,12 @@ function collect(){const fd=new FormData(form),o={};
   o.habeas=!!o.habeas;o.contacto_marcas=!!o.contacto_marcas;o.interes_lab=!!o.interes_lab;return o;}
 form.addEventListener('submit',async e=>{e.preventDefault();form.classList.add('was-validated');
   if(!form.checkValidity()){const bad=form.querySelector(':invalid');if(bad){bad.focus({preventScroll:true});bad.scrollIntoView({behavior:'smooth',block:'center'});}msg('Revisa los campos marcados en rojo.','err');return;}
+  if(viaSheets){const btn=q('#regSubmit');btn.disabled=true;msg('Guardando tu registro…');
+    try{const rec=collect();Object.assign(rec,{tipo,tipo_label:TIPO[tipo],segmento:SEG[rec.etapa]||''});
+      const r=await NXS.post('ponencias',rec);rec.codigo=r.codigo;rec.estado=r.estado;taken=r.confirmados;paint();done(rec);msg('');
+      if(r.repetido)q('#doneNote').textContent='Ya tenías un registro con estos datos: este es tu código. '+q('#doneNote').textContent;}
+    catch(err){msg('No pudimos guardar el registro. Revisa tu conexión e intenta de nuevo.','err');}
+    finally{btn.disabled=false;}return;}
   if(!db||!uid){msg('Esta vista no puede guardar registros. Ábrela con una cuenta de la organización con permiso de edición.','err');return;}
   const btn=q('#regSubmit');btn.disabled=true;msg('Guardando tu registro…');
   const code=code5();const rec=collect();let placed=false;
@@ -1507,12 +1523,12 @@ qa('[data-go-lab]').forEach(b=>b.addEventListener('click',window.goLab));
 if((location.hash||'')==='#laboratorio'){openTab('registro',false);showRS('lab');}
 
 const form=q('#labForm'),msgEl=q('#labMsg');const msg=(t,c)=>{msgEl.textContent=t;msgEl.className='reg-msg'+(c?' '+c:'');};
-let db=null,user=null,uid=null,canWrite=null,downloads=null;
+let db=null,user=null,uid=null,canWrite=null,downloads=null,labSheets=false;
 (async()=>{
-  if(!window.claude||!claude.use){q('#labBanner').innerHTML='<b>Vista sin conexión.</b> Aquí ves el formulario; las inscripciones solo se guardan en la página publicada.';q('#labBanner').hidden=false;return;}
+  if(!window.claude||!claude.use){if(NXS.on){labSheets=true;return;}q('#labBanner').innerHTML='<b>Vista sin conexión.</b> Aquí ves el formulario; las inscripciones solo se guardan en la página publicada.';q('#labBanner').hidden=false;return;}
   [db,user]=await Promise.all([claude.use('db'),claude.use('user')]);
   if(user){try{uid=await user.id();}catch(e){}try{canWrite=await user.can('data.write');}catch(e){}}
-  if(!db||!uid||canWrite===false){q('#labBanner').innerHTML='<b>Vista de consulta.</b> Esta vista no puede guardar inscripciones: se guardan cuando la página se abre con una cuenta de la organización con permiso de edición.';q('#labBanner').hidden=false;}
+  if((!db||!uid||canWrite===false)&&NXS.on){labSheets=true;}else if(!db||!uid||canWrite===false){q('#labBanner').innerHTML='<b>Vista de consulta.</b> Esta vista no puede guardar inscripciones: se guardan cuando la página se abre con una cuenta de la organización con permiso de edición.';q('#labBanner').hidden=false;}
   let admin=false;try{admin=!!(user&&await user.canEdit());}catch(e){}
   if(admin&&db){q('#labAdmin').hidden=false;load();}
   claude.use('downloads').then(d=>{downloads=d;if(!d)q('#labCsv').hidden=true;});
@@ -1521,6 +1537,13 @@ const code5=()=>{const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';crypto.getR
 function chipsOk(){let ok=true;qa('#labForm [data-lchips][data-required]').forEach(d=>{const any=d.querySelector('input:checked');d.style.outline=any?'':'1px solid #FF6B8B';d.style.borderRadius='12px';if(!any)ok=false;});return ok;}
 form.addEventListener('submit',async e=>{e.preventDefault();form.classList.add('was-validated');
   const c1=chipsOk();if(!form.checkValidity()||!c1){const bad=form.querySelector(':invalid')||form.querySelector('[data-lchips][data-required]');bad&&bad.scrollIntoView({behavior:'smooth',block:'center'});msg('Revisa los campos marcados en rojo.','err');return;}
+  if(labSheets){const btn=q('#labSubmit');btn.disabled=true;msg('Guardando tu inscripción…');
+    try{const fd=new FormData(form),o={};for(const [k,v] of fd.entries()){if(o[k]!==undefined)o[k]=[].concat(o[k],v);else o[k]=v;}
+      ['objetivos','horario'].forEach(k=>{if(o[k]!==undefined&&!Array.isArray(o[k]))o[k]=[o[k]];});o.habeas=!!o.habeas;o.contacto_tag=!!o.contacto_tag;
+      const r=await NXS.post('lab',o);form.hidden=true;q('#labDone').hidden=false;q('#labCode').textContent=r.codigo;
+      q('#labDoneTitle').textContent=r.repetido?`${o.nombres}, ya estabas inscrito en el laboratorio`:`¡Listo, ${o.nombres}! Estás en la lista del laboratorio`;q('#labDone').scrollIntoView({behavior:'smooth',block:'center'});msg('');}
+    catch(err){msg('No pudimos guardar la inscripción. Revisa tu conexión e intenta de nuevo.','err');}
+    finally{btn.disabled=false;}return;}
   if(!db||!uid){msg('Esta vista no puede guardar inscripciones. Ábrela con una cuenta de la organización con permiso de edición.','err');return;}
   const btn=q('#labSubmit');btn.disabled=true;msg('Guardando tu inscripción…');
   const fd=new FormData(form),o={};for(const [k,v] of fd.entries()){if(o[k]!==undefined)o[k]=[].concat(o[k],v);else o[k]=v;}

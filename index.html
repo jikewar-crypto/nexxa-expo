@@ -1173,6 +1173,10 @@ ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radi
 @media (max-width:760px){:root{--logo-h:92px}.inv-main{border-right:0}.inv-partners .inv-link:last-child:nth-child(odd){grid-column:1/-1}}
 .inv-main{display:block!important;align-self:stretch;padding-top:0!important;padding-bottom:0!important}
 .inv-main .inv-link{align-content:start;padding:6px 4px!important}
+
+@media (min-width:901px){.inv-partners{display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;row-gap:26px!important}.inv-partners .inv-link{grid-column:span 2}.inv-partners .inv-link:nth-child(5):nth-last-child(3){grid-column:2/span 2}.inv-partners .inv-link:nth-child(6):nth-last-child(2){grid-column:4/span 2}.inv-partners .inv-link:nth-child(7):last-child{grid-column:6/span 2}.inv-partners img.nx360{max-height:92px!important;height:92px!important;width:92px!important}}
+.inv-partners img.nx360{border-radius:50%;box-shadow:0 0 18px -4px rgba(212,175,55,.7)}
+img.nx360{border-radius:50%}
 </style>
 
 </head>
@@ -1236,6 +1240,7 @@ ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radi
         <a class="inv-link" href="https://jademind.com.co/" target="_blank" rel="noopener" aria-label="Ir al sitio de JadeMind"><img class="sq" src="inv-jademind.png" alt="JadeMind" width="597" height="700"><span class="go">Clic para ingresar</span></a>
         <a class="inv-link" href="https://www.estrategasia.com" target="_blank" rel="noopener" aria-label="Ir al sitio de Estrategas IA"><img class="sq estr" src="inv-estrategas.png" alt="Estrategas IA" width="400" height="397"><span class="go">Clic para ingresar</span></a>
         <a class="inv-link" href="https://www.skool.com/iacommerce/about" target="_blank" rel="noopener" aria-label="Ir a la comunidad de IA Commerce"><img class="sq iac" src="brand-iacommerce.jpg" alt="IA Commerce" width="256" height="256"><span class="go">Clic para ingresar</span></a>
+        <a class="inv-link" href="https://www.instagram.com/nexus360.latam" target="_blank" rel="noopener" aria-label="Ir al Instagram de Nexus 360 Latam"><img class="sq nx360" src="inv-nexus360.png" alt="Nexus 360 by Sebastián Patiño" width="360" height="360"><span class="go">Clic para ingresar</span></a>
       </div>
     </div>
   </div>
@@ -1811,6 +1816,7 @@ const ALIADOS=[
  {k:'Ponencia 4',name:'JadeMind',img:'inv-jademind.png',cls:'sq',text:'Inteligencia artificial para potenciar emprendimientos físicos y digitales.',url:'https://jademind.com.co/'},
  {k:'Ponencia 1',name:'Estrategas IA',img:'inv-estrategas.png',cls:'sq',text:'Enseña dropshipping en Latinoamérica y crea agentes de IA que montan tiendas, venden por WhatsApp y producen videos y campañas en Meta.',url:'https://www.estrategasia.com'},
  {k:'Ponencia 1',name:'IA Commerce',img:'brand-iacommerce.jpg',cls:'sq iac',text:'Comunidad de ecommerce de Carlos Mora: herramientas, agentes de IA y plantillas para vender de forma profesional y automatizada en Mercado Libre, dropshipping y marca privada.',url:'https://www.skool.com/iacommerce/about'},
+ {k:'Aliado',name:'Nexus 360 Latam',img:'inv-nexus360.png',cls:'sq nx360',text:'Firma de consultoría y desarrollo de negocios fundada por Sebastián Patiño en Medellín: expansión internacional, representación comercial y alianzas estratégicas para que pymes y emprendimientos crezcan en Latinoamérica.',url:'https://www.instagram.com/nexus360.latam'}
 ];
 const PIN='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19E3F8" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 const $=s=>document.querySelector(s);

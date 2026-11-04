@@ -1028,6 +1028,25 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
 .promo-snd .snd-on{display:none}.promo-snd[aria-pressed="true"] .snd-on{display:inline}.promo-snd[aria-pressed="true"] .snd-x{display:none}
 .promo-vid video{cursor:pointer}
 .promo-vid.playing .promo-tag{opacity:1!important}
+
+/* ===== Avisos de descarga ===== */
+.nx-spin{display:inline-block;flex:none;width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(25,227,248,.3);border-top-color:#19e3f8;animation:nxSpin .8s linear infinite;vertical-align:-3px}
+.tk-dl .nx-spin{border-color:rgba(2,10,36,.25);border-top-color:#020a24;margin-right:2px}
+@keyframes nxSpin{to{transform:rotate(360deg)}}
+.tk-dl{white-space:nowrap}
+.tk-dl.busy{opacity:.85;cursor:progress}
+.tk-dl.ok{background:linear-gradient(90deg,#22c55e,#19e3f8)!important}
+.tk-dl svg{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.tk-loading{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:16px;border-radius:14px;border:1px dashed rgba(25,227,248,.5);background:rgba(25,227,248,.06)}
+.tk-loading .nx-spin{width:28px;height:28px;border-width:3px}
+.tk-loading div{display:grid;gap:2px}.tk-loading b{color:#fff}.tk-loading span{color:var(--soft);font-size:14px}
+.nx-toast{position:fixed;z-index:1200;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;pointer-events:none;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100vw - 32px);padding:14px 18px;border-radius:16px;background:rgba(2,10,36,.95);border:1px solid var(--cyan);box-shadow:0 10px 40px -10px rgba(25,227,248,.8);color:#fff;font-size:14px;transition:opacity .3s,transform .3s}
+.nx-toast.show{opacity:1;transform:translate(-50%,0)}
+.nx-toast span:not(.nx-spin):not(.nx-ok):not(.nx-bad){display:grid;gap:2px;color:var(--soft)}
+.nx-toast b{color:#fff;font-size:15px}
+.nx-toast.ok{border-color:#22c55e}.nx-toast.err{border-color:#ff3b6b}
+.nx-ok,.nx-bad{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:700}
+.nx-ok{background:#22c55e;color:#04210f}.nx-bad{background:#ff3b6b;color:#fff}
 </style>
 
 </head>
@@ -1447,13 +1466,24 @@ async function makeTicket(rec,kind){
   x.fillText(lab?'Guarda esta tarjeta · nexxaexpo2026.online':'Presenta este QR en la entrada del auditorio · nexxaexpo2026.online',W/2,H-58);
   return cv;}
 async function download(cv,code){const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const filename=`nexxa-expo-${code}.png`;
-  if(window.claude&&claude.use){try{const d=await claude.use('downloads');if(d){await d.save({filename,data:blob});return;}}catch(e){if(e&&e.code==='declined')return;}}
-  const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);}
+  if(window.claude&&claude.use){try{const d=await claude.use('downloads');if(d){await d.save({filename,data:blob});return 'saved';}}catch(e){if(e&&e.code==='declined')return 'declined';}}
+  const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),8000);return 'saved';}
+let toastT=0;function toast(html,kind){let t=document.getElementById('nxToast');if(!t){t=document.createElement('div');t.id='nxToast';t.className='nx-toast';t.setAttribute('role','status');t.setAttribute('aria-live','polite');document.body.appendChild(t);}
+  t.className='nx-toast show '+(kind||'');t.innerHTML=html;clearTimeout(toastT);if(kind!=='busy')toastT=setTimeout(()=>t.classList.remove('show'),3800);}
+const SPIN='<span class="nx-spin" aria-hidden="true"></span>';
 window.NXTicket={async show(box,rec,kind){if(!box||!rec||!rec.codigo)return;let w=box.querySelector('.tk-wrap');if(!w){w=document.createElement('div');w.className='tk-wrap';box.appendChild(w);}
-  w.innerHTML='<p class="muted" style="margin:0">Generando tu tarjeta…</p>';
+  w.innerHTML=`<div class="tk-loading">${SPIN}<div><b>Generando tu tarjeta con QR…</b><span>Tarda unos segundos.</span></div></div>`;
   try{const cv=await makeTicket(rec,kind);const url=cv.toDataURL('image/png');
     w.innerHTML=`<img class="tk-img" src="${url}" alt="Tarjeta de registro de ${String(rec.nombres||'').replace(/"/g,'')} con código QR"><div class="tk-actions"><button type="button" class="cta-reg tk-dl"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Descargar tarjeta</button><p class="muted">Guárdala en tu celular: el QR confirma tu registro en la entrada.</p></div>`;
-    w.querySelector('.tk-dl').addEventListener('click',()=>download(cv,rec.codigo));}
+    const btn=w.querySelector('.tk-dl'),lbl=btn.innerHTML;
+    btn.addEventListener('click',async()=>{if(btn.disabled)return;btn.disabled=true;btn.classList.add('busy');btn.innerHTML=SPIN+'Descargando…';
+      toast(SPIN+'<span><b>Preparando tu tarjeta</b>La descarga empieza en un momento…</span>','busy');
+      await new Promise(r=>setTimeout(r,60));let st='error';try{st=await download(cv,rec.codigo);}catch(e){}
+      if(st==='saved'){btn.classList.remove('busy');btn.classList.add('ok');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>¡Descargada!';
+        toast('<span class="nx-ok">✓</span><span><b>¡Listo! Tarjeta descargada</b>Búscala en tus descargas o en la galería: nexxa-expo-'+rec.codigo+'.png</span>','ok');}
+      else if(st==='declined'){btn.classList.remove('busy');btn.innerHTML=lbl;toast('<span><b>Descarga cancelada</b>Puedes intentarlo de nuevo cuando quieras.</span>');}
+      else{btn.classList.remove('busy');btn.innerHTML=lbl;toast('<span class="nx-bad">!</span><span><b>No se pudo descargar</b>Mantén presionada la imagen de la tarjeta para guardarla.</span>','err');}
+      setTimeout(()=>{btn.disabled=false;if(btn.classList.contains('ok')){btn.classList.remove('ok');btn.innerHTML=lbl;}},4000);});}
   catch(e){w.innerHTML='<p class="muted" style="margin:0">No pudimos generar la tarjeta. Guarda tu código de registro.</p>';}}};
 
 /* ---------- Verificación al escanear el QR ---------- */

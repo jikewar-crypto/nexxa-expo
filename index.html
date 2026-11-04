@@ -918,6 +918,39 @@ ol.outline span{color:var(--soft);font-size:14.5px;line-height:1.5}
 .spk-motto{margin:0;display:flex;gap:6px;align-items:center;font-family:var(--f-disp);font-size:clamp(18px,2vw,22px);font-weight:600;color:#fff}
 .spk-brand.wide{width:auto;height:auto;padding:8px 10px;border-radius:12px}
 .spk-brand.wide img{width:84px}
+
+/* ===== Ponencias v2: ponentes arriba ===== */
+.pon-v2{display:grid;gap:16px}
+.pon-strip{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto;gap:8px 18px!important;align-items:center;padding:16px 22px!important}
+.pon-strip .pon-title{font-size:clamp(22px,2.4vw,32px);margin-top:4px}
+.pon-strip .pon-by{justify-content:flex-end}
+.pon-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
+.spk-heroes{display:grid;gap:14px}
+.spk-hero{display:grid!important;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:20px!important;align-items:start;padding:18px!important}
+.spk-hero .spk-name{font-size:clamp(30px,3.4vw,46px)}
+.spk-hero .spk-role{font-size:15.5px}
+.spk-hero .spk-stats b{font-size:clamp(22px,2.3vw,30px)}
+.spk-hero .spk-stats small{font-size:12px}
+.spk-more-btn{appearance:none;cursor:pointer;justify-self:start;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;border:1px solid var(--cyan);background:rgba(25,227,248,.1);color:#fff;font:600 14px var(--f-body)}
+.spk-more-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.spk-more-btn:hover{background:var(--cyan);color:var(--night)}
+.learn{align-self:stretch}
+.pon-bottom{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px}
+.pon-about{display:grid;gap:14px;align-content:start}
+.spk-more{display:grid!important;gap:16px!important;scroll-margin-top:90px}
+.sm-head{display:flex;align-items:center;gap:14px}
+.sm-head .sm-av{width:64px;height:64px}
+.sm-head h3{margin:2px 0 0;font-family:var(--f-disp);font-size:clamp(24px,2.6vw,32px);text-transform:uppercase}
+.sm-head small{color:var(--soft);font-size:14px}
+.sm-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px}
+.sm-col{display:grid;gap:14px;align-content:start}
+.pb-spk{display:flex!important;align-items:center;gap:6px;margin-top:4px}
+.pb-spk img{width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:1.5px solid var(--cyan);margin-right:-12px}
+.pb-spk img:last-of-type{margin-right:0}
+.pb-spk i{font-style:normal;font-size:12px;font-weight:600;color:var(--soft);margin-left:4px;line-height:1.2}
+.pon-btn[aria-pressed="true"] .pb-spk i{color:#fff}
+@media (max-width:980px){.pon-top,.pon-bottom,.sm-grid{grid-template-columns:minmax(0,1fr)}.pon-strip{grid-template-columns:auto minmax(0,1fr)!important}.pon-strip .pon-by{grid-column:1/-1;justify-content:flex-start}}
+@media (max-width:560px){.spk-hero{grid-template-columns:minmax(0,1fr)!important}.spk-hero .spk-photo{max-width:300px;width:100%;justify-self:center}}
 </style>
 
 </head>
@@ -1322,7 +1355,7 @@ flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
 bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.7.5 1 1.2 1 2.1h5c0-.9.3-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
 rocket:'<path d="M12 15l-3-3c1.5-4.5 4.5-8 10-9-1 5.5-4.5 8.5-9 10z"/><path d="M9 12l-4 1-2 3 4 .5M12 15l-1 4-3 2-.5-4"/><circle cx="15" cy="9" r="1.5"/>'
 };
-Object.assign(ICONS,{grad:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',at:'<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>',play:'<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/>',quote:'<path d="M7 7h4v4c0 3-1.5 5-4 6M15 7h4v4c0 3-1.5 5-4 6"/>',live:'<circle cx="12" cy="12" r="2.5"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8"/>'});
+Object.assign(ICONS,{chevd:'<path d="M6 9l6 6 6-6"/>',grad:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',at:'<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>',play:'<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/>',quote:'<path d="M7 7h4v4c0 3-1.5 5-4 6M15 7h4v4c0 3-1.5 5-4 6"/>',live:'<circle cx="12" cy="12" r="2.5"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8"/>'});
 const svgI=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]||ICONS.sparkle}</svg>`;
 const ic=n=>`<i class="ico">${svgI(n)}</i>`;
 const metaBadge=()=>`<i class="meta-badge" title="Meta Ads">${svgI('megaphone')}META ADS</i>`;
@@ -1431,8 +1464,42 @@ function spkHTML(p){const S=p.speakers,tbd=S.some(x=>x.tbd);return `<div class="
     ${x.motto?`<p class="spk-motto">${ic('target')}<span>${esc(x.motto)}</span></p>`:''}
     <div class="spk-links">${x.links.map(([n,h,u])=>`<a class="spk-link" href="${u}" target="_blank" rel="noopener">${ic(n==='YouTube'?'play':'at')}<span><small>${n}</small>${esc(h)}</span></a>`).join('')}${x.brand?`<a class="spk-link" href="${x.brand.url}" target="_blank" rel="noopener">${ic('link')}<span><small>Sitio web</small>${esc(x.brand.label)}</span></a>`:''}</div>
    </div></article>`).join('')}</div>`;}
+function learnHTML(p){return `<div class="card learn"><span class="label">${ic('book')}Qué vas a aprender</span>${p.outline?`<ol class="outline">${p.outline.map(([t,d,live],i)=>`<li class="${live?'ol-live':''}">${ic(PIC[p.id].ti[i]||'sparkle')}<div><b><span class="ol-n">${i+1}</span>${esc(t)}${live?'<em class="ol-tag">En vivo</em>':''}</b><span>${esc(d)}</span></div></li>`).join('')}</ol>`:`<ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul>`}</div>`;}
+function labHTML(p){return p.lab?`<div class="card glow pon-lab"><div><span class="label">${ic('monitor')}Continúa después de la ponencia</span><h3>${esc(p.lab.title)}</h3>${metaBadge()}<p>${esc(p.lab.text)}</p></div>
+     <div class="lab-steps">${p.lab.steps.map(([a,b],i)=>`<div><b>${ic(['gift','layers','calendar'][i]||'sparkle')}${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>
+     <button type="button" class="btn" data-go-lab>Inscríbete al laboratorio virtual</button></div>`:'';}
+const LOC=`<div class="pin-loc">${PIN}<span>Auditorio principal · Institución Universitaria Salazar y Herrera<br><small class="muted">Carrera 70 # 52-49 (Bulevar Libertadores de América # 52-49), barrio Los Colores, Medellín</small></span></div>`;
+function linksHTML(x){return `<div class="spk-links">${x.links.map(([n,h,u])=>`<a class="spk-link" href="${u}" target="_blank" rel="noopener">${ic(n==='YouTube'?'play':'at')}<span><small>${n}</small>${esc(h)}</span></a>`).join('')}${x.brand?`<a class="spk-link" href="${x.brand.url}" target="_blank" rel="noopener">${ic('link')}<span><small>Sitio web</small>${esc(x.brand.label)}</span></a>`:''}</div>`;}
+function heroHTML(p){const S=p.speakers;return `<div class="spk-heroes">${S.map((x,k)=>x.tbd?`<div class="card spk-tbd"><div class="spk-tbd-av">${svgI('users')}</div><div><span class="label">Ponente ${k+1} · Bloque ${+p.n}</span><h4>Por confirmar</h4><p class="muted">Muy pronto anunciamos al segundo ponente de este bloque.</p></div></div>`:
+  `<article class="card glow spk-hero"><figure class="spk-photo"><img src="${x.photo}" alt="${esc(x.name)}" width="720" height="900">${x.brand?`<a class="spk-brand${x.brand.img==='tag-logo.png'?' wide':''}" href="${x.brand.url}" target="_blank" rel="noopener" aria-label="Ir al sitio de ${esc(x.brand.name)}"><img src="${x.brand.img}" alt="${esc(x.brand.name)}"></a>`:''}</figure>
+   <div class="spk-body"><span class="label">${ic('mic')}${S.length>1?`Ponente ${k+1}`:'Ponente'} · Bloque ${+p.n}</span><h3 class="spk-name">${esc(x.name)}</h3><p class="spk-role">${esc(x.role)}</p>
+    <div class="spk-tags">${x.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+    <div class="spk-stats">${x.stats.map(([a,b])=>`<div><b>${esc(a)}</b><small>${esc(b)}</small></div>`).join('')}</div>
+    <button type="button" class="spk-more-btn" onclick="document.getElementById('more-${p.id}-${k}').scrollIntoView({behavior:'smooth',block:'start'})">Conoce más de ${esc(x.name.split(' ')[0])} ${svgI('chevd')}</button>
+   </div></article>`).join('')}</div>`;}
+function moreHTML(p){return p.speakers.map((x,k)=>x.tbd?'':`<section class="card glow spk-more" id="more-${p.id}-${k}">
+   <header class="sm-head"><img class="sm-av" src="${x.photo}" alt=""><div><span class="label">${ic('mic')}Conoce al ponente</span><h3>${esc(x.name)}</h3><small>${esc(x.role)}</small></div></header>
+   <div class="sm-grid"><div class="sm-col">
+     <p class="spk-bio">${esc(x.bio)}</p>
+     ${x.feature?`<div class="spk-feature">${ic('sparkle')}<div><b>${esc(x.feature.title)}</b><span>${esc(x.feature.text)}</span></div></div>`:''}
+     <ul class="spk-creds">${x.creds.map(c=>Array.isArray(c)?`<li>${ic(c[0])}<span>${esc(c[1])}</span></li>`:`<li>${ic('grad')}<span>${esc(c)}</span></li>`).join('')}</ul>
+   </div><div class="sm-col">
+     ${x.agents?`<div class="spk-agents"><span class="label">${ic('chip')}${esc(x.chipsTitle||'')}</span><div>${x.agents.map(([i,t])=>`<span>${ic(i)}${esc(t)}</span>`).join('')}</div></div>`:''}
+     ${x.quote?`<blockquote class="spk-quote">${svgI('quote')}<span>${esc(x.quote)}</span></blockquote>`:''}
+     ${x.motto?`<p class="spk-motto">${ic('target')}<span>${esc(x.motto)}</span></p>`:''}
+     ${linksHTML(x)}
+   </div></div></section>`).join('');}
 function renderPon(id){const p=PONENCIAS.find(x=>x.id===id);
   document.querySelectorAll('#ponPick .pon-btn').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id===id)));
+  if(p.speakers){$('#ponDetail').innerHTML=`<div class="pon-v2">
+   <header class="card glow pon-strip"><span class="clic-num">${p.n}</span><div class="ps-txt"><span class="label">${ic(PIC[p.id].ic)}Ponencia ${+p.n} · ${esc(p.q)}</span><h3 class="pon-title">${esc(p.title)}</h3></div><div class="pon-by">${p.id==='meta'?metaBadge():''}${allyMark(p)}<span>${esc(p.by)}</span></div></header>
+   <div class="pon-top">${heroHTML(p)}${learnHTML(p)}</div>
+   <div class="pon-bottom"><div class="card pon-about"><span class="label">${ic('target')}Propósito</span><p class="quote" style="font-size:19px;margin:0">${esc(p.purpose)}</p>${LOC}</div>
+     <div class="kv"><div class="card"><span class="label">${ic('bag')}Te llevas</span><p>${esc(p.takes)}</p></div><div class="card"><span class="label">${ic('users')}Para quién</span><p>${esc(p.who)}</p></div></div></div>
+   ${labHTML(p)}
+   ${moreHTML(p)}
+  </div>`;}
+  else{
   $('#ponDetail').innerHTML=`<div class="pon-detail">
    <div class="card glow pon-main">
      <div class="pon-head"><span class="clic-num">${p.n}</span><div><span class="label">${ic(PIC[p.id].ic)}Ponencia ${+p.n} · ${esc(p.q)}</span><h3 class="pon-title">${esc(p.title)}</h3>${p.id==='meta'?metaBadge():''}</div></div>
@@ -1451,16 +1518,17 @@ function renderPon(id){const p=PONENCIAS.find(x=>x.id===id);
      <button type="button" class="btn" data-go-lab>Inscríbete al laboratorio virtual</button></div>`:''}
    ${p.speakers?spkHTML(p):''}
   </div>`;
+  }
   document.querySelectorAll('#ponDetail [data-go-reg]').forEach(b=>b.addEventListener('click',goReg));document.querySelectorAll('#ponDetail [data-go-lab]').forEach(b=>b.addEventListener('click',()=>window.goLab&&window.goLab()));}
 PONENCIAS.forEach(p=>{const b=document.createElement('button');b.type='button';b.className='cbtn pon-btn';b.dataset.id=p.id;
-  b.innerHTML=`<small>PONENCIA ${p.n}</small><span>${ic(PIC[p.id].ic)}${esc(p.q)}</span><em>${esc(p.ally)}</em>${p.id==='meta'?metaBadge():''}`;b.addEventListener('click',()=>renderPon(p.id));$('#ponPick').appendChild(b);});
+  const sp=(p.speakers||[]).filter(x=>!x.tbd);b.innerHTML=`<small>PONENCIA ${p.n}</small><span>${ic(PIC[p.id].ic)}${esc(p.q)}</span>${sp.length?`<span class="pb-spk">${sp.map(x=>`<img src="${x.photo}" alt="">`).join('')}<i>${sp.map(x=>esc(x.name)).join(' · ')}</i></span>`:`<em>${esc(p.ally)}</em>`}${p.id==='meta'?metaBadge():''}`;b.addEventListener('click',()=>renderPon(p.id));$('#ponPick').appendChild(b);});
 renderPon('dropshipping');
 document.querySelectorAll('.ps-btn').forEach(b=>b.addEventListener('click',()=>{openTab('ponencias',true);renderPon(b.dataset.pon);}));
 
 /* ================= AGENDA ================= */
 const AG_TIMES=['3:00 – 3:15 p. m.','3:15 – 4:15 p. m.','4:15 – 5:15 p. m.','5:15 – 6:15 p. m.','6:15 – 7:15 p. m.','7:15 – 8:00 p. m.'];
 $('#agendaList').innerHTML=[['Ingreso y registro','Presenta tu código de registro en la entrada del auditorio.',null,'login']]
-  .concat(PONENCIAS.map(p=>[`Ponencia ${+p.n} · ${p.title}`,p.by+(p.lab?'. Al final se presenta el laboratorio virtual de Meta Ads.':'.'),p.id,PIC[p.id].ic]))
+  .concat(PONENCIAS.map(p=>[`Ponencia ${+p.n} · ${p.title}`,((p.speakers||[]).filter(x=>!x.tbd).length?'Con '+p.speakers.filter(x=>!x.tbd).map(x=>x.name+' ('+x.role+')').join(' y ')+'. ':'')+p.by+(p.lab?'. Al final se presenta el laboratorio virtual de Meta Ads.':'.'),p.id,PIC[p.id].ic]))
   .concat([['Cierre y conexión con las marcas','Preguntas finales y contacto con los aliados.',null,'flag']])
   .map(([t,d,id,icn],i)=>`<li class="ag-item${id?'':' ag-open'}"><span class="ag-time">${AG_TIMES[i]}</span><div><h3>${ic(icn)}${esc(t)}</h3>${id==='meta'?metaBadge():''}<p class="muted">${esc(d)}</p>${id?`<button type="button" class="ag-more" data-pon="${id}">Ver contenido</button>`:''}</div></li>`).join('');
 document.querySelectorAll('.ag-more').forEach(b=>b.addEventListener('click',()=>{openTab('ponencias',true);renderPon(b.dataset.pon);}));

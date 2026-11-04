@@ -1086,6 +1086,17 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
 .rstep.sel .rs-sel{display:block}.rstep.sel .rs-go{display:none}
 .rstep:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .rstep div>span:last-of-type{color:var(--soft);font-size:14px;line-height:1.45}
+
+.caps{display:grid!important;gap:14px!important}
+.caps h3{margin:0;font-family:var(--f-disp);font-size:clamp(24px,2.8vw,34px);text-transform:uppercase}
+.caps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cap{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:14px;border:1px solid rgba(25,227,248,.22);background:rgba(2,10,36,.45);transition:border-color .2s,transform .2s}
+.cap:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.cap .ico{width:36px;height:36px;padding:7px;margin:0;border-radius:10px;background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(25,227,248,.12));border:1px solid rgba(34,197,94,.5);color:#5eead4}
+.cap div{display:grid;gap:3px}.cap b{font-family:var(--f-disp);font-size:18px;color:#fff;line-height:1.15}.cap span{color:var(--soft);font-size:14px;line-height:1.45}
+.caps-cta{justify-self:start;text-decoration:none}
+@media (max-width:980px){.caps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.caps-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 </head>
@@ -1598,7 +1609,7 @@ Object.assign(ICONS,{chevd:'<path d="M6 9l6 6 6-6"/>',grad:'<path d="M2 9l10-5 1
 const svgI=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]||ICONS.sparkle}</svg>`;
 const ic=n=>`<i class="ico">${svgI(n)}</i>`;
 const metaBadge=()=>`<i class="meta-badge" title="Meta Ads">${svgI('megaphone')}META ADS</i>`;
-const PIC={dropshipping:{ic:'box',ti:['box','trophy','shield','live','rocket']},meta:{ic:'megaphone',ti:['megaphone','target','image','funnel','chart']},mastershop:{ic:'store',ti:['store','link','truck','coins','calendar']},jademind:{ic:'chip',ti:['chip','chat','refresh','store','sparkle']}};
+const PIC={dropshipping:{ic:'box',ti:['box','trophy','shield','live','rocket']},meta:{ic:'megaphone',ti:['megaphone','target','image','funnel','chart']},mastershop:{ic:'store',ti:['store','link','truck','coins','calendar']},jademind:{ic:'chip',ti:['sparkle','chat','layers','truck','megaphone','rocket']}};
 function fillIcons(root){(root||document).querySelectorAll('.ico[data-ic]').forEach(e=>{e.innerHTML=svgI(e.dataset.ic);e.removeAttribute('data-ic');});(root||document).querySelectorAll('.meta-badge[data-meta]').forEach(e=>{e.outerHTML=metaBadge();});}
 fillIcons();
 </script>
@@ -1670,7 +1681,37 @@ const PONENCIAS=[
   purpose:'Mostrar cómo la inteligencia artificial potencia emprendimientos físicos y digitales: atender, vender y operar mejor, con menos esfuerzo.',
   topics:['Qué puede hacer la inteligencia artificial hoy por un negocio pequeño','Agentes virtuales que atienden y venden por WhatsApp y redes sociales','Automatización de tareas repetitivas del día a día','Casos para negocios físicos y para tiendas en línea','Cómo empezar a implementarla sin conocimientos técnicos'],
   takes:'Ideas concretas para usar la IA en tu negocio desde mañana.',
-  who:'Negocios físicos que quieren digitalizarse y emprendimientos en línea que quieren crecer.'}
+  who:'Negocios físicos que quieren digitalizarse y emprendimientos en línea que quieren crecer.',
+  outline:[
+   ['Qué puede hacer la IA hoy por tu negocio','Casos reales para negocios físicos, tiendas en línea, marcas y dropshippers: atender, vender y operar con menos esfuerzo.'],
+   ['Agentes que venden y cierran pedidos','Asistentes conversacionales que responden, asesoran y cierran ventas las 24 horas por WhatsApp, Instagram y Messenger.'],
+   ['Un CRM que trabaja por ti','Todos tus clientes y conversaciones en un solo lugar, con seguimiento automático para que ninguna venta se quede en el chat.'],
+   ['Logística y finanzas en automático','Los pedidos se cargan solos, se generan las guías, sigues cada envío y ves el estado financiero de tus ventas al día.'],
+   ['Más clientes con Meta Ads y landing pages','Campañas y páginas de venta conectadas a tus agentes, para que cada clic llegue a una conversación que vende.'],
+   ['Cómo empezar sin conocimientos técnicos','Los primeros pasos para implementar la IA en tu negocio desde mañana.']],
+  caps:{title:'Todo lo que puedes hacer con JadeMind',items:[
+   ['chat','Agentes conversacionales que venden','Atienden, asesoran y cierran ventas por ti, las 24 horas.'],
+   ['users','Omnicanalidad','WhatsApp, Instagram y Messenger en una sola bandeja de conversaciones.'],
+   ['layers','CRM con inteligencia artificial','Clientes, conversaciones y oportunidades organizados, con seguimiento automático.'],
+   ['truck','Automatización logística','Carga automática de pedidos, generación de guías y seguimiento de envíos.'],
+   ['chart','Finanzas y reportes al día','Estados financieros y reportes de tus ventas sin hojas de cálculo manuales.'],
+   ['megaphone','Gestión de Meta Ads','Campañas para atraer clientes y llevarlos directo a tus agentes.'],
+   ['monitor','Landing pages que convierten','Páginas de venta diseñadas para tus productos y conectadas a tus canales.'],
+   ['refresh','Tareas repetitivas en automático','Respuestas, recordatorios y procesos del día a día sin intervención manual.'],
+   ['store','Para negocios físicos y en línea','Marcas, tiendas y dropshippers que quieren vender más con menos esfuerzo.']]},
+  speakers:[
+   {name:'José Manuel Toro Restrepo',photo:'spk-jose-toro.jpg',role:'Cofundador de JadeMind · Ejecutivo Comercial de Grandes Superficies para Latinoamérica',tags:['Retail','Supply chain','IA aplicada','Mentor de pymes'],
+    stats:[['LATAM','gestión comercial en varios países'],['MBA','y máster en cadenas de suministro'],['+12','diplomados en Colombia y México'],['CEIPA','mentor y consultor de pymes']],
+    bio:'Lidera la gestión de clientes y el desarrollo de oportunidades de negocio en distintos mercados de Latinoamérica. Combina la experiencia comercial y logística del retail con la inteligencia artificial para ayudar a emprendedores y pymes a crecer.',
+    path:[['store','Ejecutivo Comercial de Grandes Superficies para LATAM','Lidera la gestión de clientes y el desarrollo de oportunidades de negocio en distintos mercados de la región.'],
+     ['chart','Gestión comercial end to end y análisis de datos','Coordina operaciones en varios países de Latinoamérica.'],
+     ['truck','Planeación, abastecimiento y logística para el retail','Proyectos de cadena de suministro para el sector Retail.'],
+     ['users','Mentor, consultor y asesor en la Universidad CEIPA','Acompaña a estudiantes, emprendedores y pymes en el análisis de sus retos y en la búsqueda de soluciones para impulsar sus negocios.'],
+     ['chip','Cofundador de JadeMind','Soluciones tecnológicas a través de agentes de inteligencia artificial.']],
+    creds:['Administrador de Empresas','Especialización en Gerencia Logística','Máster en Cadenas de Suministro','MBA','Más de nueve diplomados · Universidad Politécnica de Colombia','Dos diplomados · Pontificia Universidad Javeriana','Diplomado en Asesoramiento Empresarial · CETYS Universidad (México)'],
+    chipsTitle:'Lo que construye con JadeMind',agents:[['chat','Agentes que venden por WhatsApp, Instagram y Messenger'],['layers','CRM con IA'],['truck','Logística automatizada'],['megaphone','Meta Ads y landing pages']],
+    brand:{img:'inv-jademind.png',name:'JadeMind',url:'https://jademind.com.co/',label:'jademind.com.co'},
+    links:[]}]}
 ];
 const ALIADOS=[
  {k:'Organiza',name:'Impulso',img:'impulso.png',cls:'imp',text:'Organizador de Nexxa Expo.',url:null},
@@ -1752,6 +1793,7 @@ function renderPon(id){const p=PONENCIAS.find(x=>x.id===id);
    <div class="pon-top">${heroHTML(p)}${learnHTML(p)}</div>
    <div class="pon-bottom"><div class="card pon-about"><span class="label">${ic('target')}Propósito</span><p class="quote" style="font-size:19px;margin:0">${esc(p.purpose)}</p>${LOC}</div>
      <div class="kv"><div class="card"><span class="label">${ic('bag')}Te llevas</span><p>${esc(p.takes)}</p></div><div class="card"><span class="label">${ic('users')}Para quién</span><p>${esc(p.who)}</p></div></div></div>
+   ${p.caps?`<section class="card glow caps"><span class="label">${ic('chip')}Plataforma</span><h3>${esc(p.caps.title)}</h3><div class="caps-grid">${p.caps.items.map(([i,t,d])=>`<div class="cap">${ic(i)}<div><b>${esc(t)}</b><span>${esc(d)}</span></div></div>`).join('')}</div>${p.speakers&&p.speakers[0].brand?`<a class="btn caps-cta" href="${p.speakers[0].brand.url}" target="_blank" rel="noopener">Conoce ${esc(p.speakers[0].brand.name)} ›</a>`:''}</section>`:''}
    ${labHTML(p)}
   </div>`;}
   else{

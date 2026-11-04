@@ -1129,6 +1129,17 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
 .li-note{font-size:13.5px!important;padding:10px 12px;border-radius:12px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.45)}
 .li-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 #labInvite:not([hidden]) ~ .lab-only{display:none}
+
+.ol-who{display:inline-flex!important;align-items:center;gap:5px;justify-self:start;margin-top:6px;font-style:normal;font:600 11.5px var(--f-body);color:#c4f6ff;padding:3px 9px 3px 7px;border-radius:999px;background:rgba(25,227,248,.1);border:1px solid rgba(25,227,248,.35)}
+.ol-who svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+ol.outline li>div{display:grid;gap:2px}
+ol.ol-tools{list-style:none;margin:8px 0 2px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+ol.ol-tools li{display:inline-flex!important;grid-template-columns:none!important;align-items:center;gap:6px;padding:5px 10px 5px 5px!important;border-radius:999px!important;background:rgba(11,92,255,.25)!important;border:1px solid rgba(25,227,248,.45)!important;font:600 13px var(--f-body);color:#fff}
+ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--cyan);color:#020a24;font:700 11px var(--f-tech);font-style:normal}
+.spk-brand.sqimg{padding:0;overflow:hidden;width:68px;height:68px;border-radius:16px;border:2px solid rgba(255,255,255,.85)}
+.spk-brand.sqimg img{width:100%;height:100%;object-fit:cover}
+.spk-link.hot{border-color:#22c55e;background:rgba(34,197,94,.12)}
+.spk-link.hot small{color:#86efac}
 </style>
 
 </head>
@@ -1644,7 +1655,7 @@ Object.assign(ICONS,{chevd:'<path d="M6 9l6 6 6-6"/>',grad:'<path d="M2 9l10-5 1
 const svgI=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]||ICONS.sparkle}</svg>`;
 const ic=n=>`<i class="ico">${svgI(n)}</i>`;
 const metaBadge=()=>`<i class="meta-badge" title="Meta Ads">${svgI('megaphone')}META ADS</i>`;
-const PIC={dropshipping:{ic:'box',ti:['box','trophy','shield','live','rocket']},meta:{ic:'megaphone',ti:['megaphone','target','image','funnel','chart']},mastershop:{ic:'store',ti:['store','link','truck','coins','calendar']},jademind:{ic:'chip',ti:['sparkle','chat','layers','truck','megaphone','rocket']}};
+const PIC={dropshipping:{ic:'box',ti:['box','trophy','shield','layers','live','rocket']},meta:{ic:'megaphone',ti:['megaphone','target','image','funnel','chart']},mastershop:{ic:'store',ti:['store','link','truck','coins','calendar']},jademind:{ic:'chip',ti:['sparkle','chat','layers','truck','megaphone','rocket']}};
 function fillIcons(root){(root||document).querySelectorAll('.ico[data-ic]').forEach(e=>{e.innerHTML=svgI(e.dataset.ic);e.removeAttribute('data-ic');});(root||document).querySelectorAll('.meta-badge[data-meta]').forEach(e=>{e.outerHTML=metaBadge();});}
 fillIcons();
 </script>
@@ -1659,15 +1670,16 @@ const TABS=[['evento','El evento'],['registro','Registro'],['ponencias','Ponenci
 const PONENCIAS=[
  {id:'dropshipping',n:'01',q:'Qué vender',ally:'Master Shop',logo:'inv-mastershop.png',logoW:true,by:'Bloque 1 · ponentes invitados por Master Shop',
   title:'De cero a tu primera venta: cómo elegir qué vender y con quién respaldarte',
-  purpose:'Entender el dropshipping sin humo, aprender a elegir y validar un producto ganador, escoger un proveedor que respalde tu marca y ver en vivo cómo un producto queda listo para vender.',
+  purpose:'Entender el dropshipping sin humo, aprender a elegir y validar un producto ganador, escoger un proveedor que respalde tu marca, conocer las 5 herramientas para ganar tus primeros USD 3.000 y ver en vivo cómo un producto queda listo para vender.',
   topics:['Qué es el dropshipping sin humo','Cómo elegir un producto ganador','Proveeduría de respaldo','En vivo: de producto a tienda lista','Cierre: la ruta de los primeros 7 días'],
   outline:[
-   ['Qué es el dropshipping sin humo','Vendes sin inventario, el proveedor despacha y tú te enfocas en vender. Mitos y realidades.'],
-   ['Cómo elegir un producto ganador','Los criterios que usamos: problema que resuelve, margen, efecto «wow» y que se pueda mostrar en video. Y cómo validarlo con datos antes de invertir en pauta.'],
-   ['Proveeduría de respaldo','Cómo escoger un proveedor confiable (stock, tiempos de despacho, efectividad de entrega y devoluciones) para que la marca no se caiga en la logística.'],
-   ['En vivo: de producto a tienda lista','Elegimos un producto entre todos y en pocos minutos mostramos cómo queda listo para vender: tienda montada y WhatsApp atendiendo solo.',true],
-   ['Cierre: la ruta de los primeros 7 días','Un plan paso a paso para la primera semana, para que nadie salga con objeciones.']],
-  takes:'Criterios para elegir y validar qué vender, cómo escoger un proveedor confiable y la ruta de tus primeros 7 días.',
+   ['Qué es el dropshipping sin humo','Vendes sin inventario, el proveedor despacha y tú te enfocas en vender. Mitos y realidades.',false,'Andrés Estrada'],
+   ['Cómo elegir un producto ganador','Los criterios que usamos: problema que resuelve, margen, efecto «wow» y que se pueda mostrar en video. Y cómo validarlo con datos antes de invertir en pauta.',false,'Andrés Estrada'],
+   ['Proveeduría de respaldo','Cómo escoger un proveedor confiable (stock, tiempos de despacho, efectividad de entrega y devoluciones) para que la marca no se caiga en la logística.',false,'Andrés Estrada'],
+   ['¿Qué necesitas para ganar tus primeros USD 3.000 haciendo dropshipping?','Las 5 herramientas que necesitas para arrancar el negocio con orden y escalarlo.',false,'Carlos Mora',['Producto','Página','Creativos','Plataforma logística','Estructura']],
+   ['En vivo: de producto a tienda lista','Elegimos un producto entre todos y en pocos minutos mostramos cómo queda listo para vender: tienda montada y WhatsApp atendiendo solo.',true,'Andrés Estrada'],
+   ['Cierre: la ruta de los primeros 7 días','Un plan paso a paso para la primera semana, para que nadie salga con objeciones.',false,'Andrés y Carlos']],
+  takes:'Criterios para elegir y validar qué vender, cómo escoger un proveedor confiable, las 5 herramientas para tus primeros USD 3.000 y la ruta de tus primeros 7 días.',
   who:'Quien quiere empezar a vender en línea sin inventario ni un capital grande.',
   speakers:[
    {name:'Andrés Estrada',photo:'spk-andres-estrada.jpg',role:'Fundador y CEO de Estrategasia',tags:['Ecommerce','Dropshipping','IA agéntica'],
@@ -1682,7 +1694,16 @@ const PONENCIAS=[
     quote:'Le hablas a tu agente y él ejecuta.',
     brand:{img:'inv-estrategas.png',name:'Estrategas IA',url:'https://www.estrategasia.com',label:'estrategasia.com'},chipsTitle:'Sus agentes de IA',
     links:[['Instagram','@estrategas_ia','https://www.instagram.com/estrategas_ia'],['YouTube','@AndresEstradaR','https://www.youtube.com/@AndresEstradaR']]},
-   {tbd:true}]},
+   {name:'Carlos Mora',photo:'spk-carlos-mora.jpg',role:'Fundador de IA Commerce',tags:['Ecommerce','Mercado Libre','Dropshipping','Marca privada','Automatización'],
+    stats:[['15','años haciendo ecommerce'],['3','modelos: Mercado Libre, dropshipping y marca privada']],
+    bio:'Fundador de IA Commerce, la primera comunidad en Latinoamérica que enseña a hacer dinero con las últimas herramientas, agentes y plantillas para hacer ecommerce de manera profesional y automatizada.',
+    path:[['rocket','Fundador de IA Commerce','Comunidad de ecommerce con herramientas, agentes de IA y plantillas para vender de forma profesional y automatizada.'],
+     ['store','15 años haciendo ecommerce','Experiencia en Mercado Libre, dropshipping y marca privada.'],
+     ['chip','Ecommerce profesional y automatizado','Enseña a operar con las últimas herramientas, agentes y plantillas.']],
+    creds:[],
+    chipsTitle:'Lo que enseña en IA Commerce',agents:[['store','Vender en Mercado Libre'],['box','Dropshipping'],['trophy','Marca privada'],['chip','Agentes y plantillas de IA']],
+    brand:{img:'brand-iacommerce.jpg',name:'IA Commerce',url:'https://www.skool.com/iacommerce/about',label:'Comunidad privada IA Commerce',kind:'Comunidad',sq:true},
+    links:[['Instagram','@kkarlosdavid','https://instagram.com/kkarlosdavid'],['TikTok','@carlos_mora_iacommerce','https://www.tiktok.com/@carlos_mora_iacommerce']]}]},
  {id:'meta',n:'02',q:'Cómo atraer clientes',ally:'TAG Digital',logo:'tag-logo.png',by:'Diseñada por la agencia de marketing digital TAG Digital',
   title:'Diseña tráfico y leads calificados con Meta Ads',
   purpose:'Aprender a diseñar campañas en Meta Ads que atraigan tráfico y contactos calificados: personas con intención real de comprar, no solo clics.',
@@ -1776,7 +1797,7 @@ function openTab(id,scroll){if(!TABS.some(t=>t[0]===id))id='evento';
 function allyMark(p){return p.logo?`<img class="pon-logo${p.logoW?' w':''}" src="${p.logo}" alt="${esc(p.ally)}">`:`<span class="tag-word">TAG <b>DIGITAL</b></span>`;}
 function spkHTML(p){const S=p.speakers,tbd=S.some(x=>x.tbd);return `<div class="spk-sec"><div class="spk-head"><span class="label">${ic('mic')}${S.length>1?'Ponentes':'Ponente'} del bloque ${+p.n}</span>${tbd?`<span class="spk-count">${S.filter(x=>!x.tbd).length} de ${S.length} confirmados</span>`:''}</div>
   ${S.map((x,k)=>x.tbd?`<div class="card spk-tbd"><div class="spk-tbd-av">${svgI('users')}</div><div><span class="label">Ponente ${k+1}</span><h4>Por confirmar</h4><p class="muted">Muy pronto anunciamos al segundo ponente de este bloque.</p></div></div>`:
-  `<article class="card glow spk" id="spk-${p.id}-${k}"><figure class="spk-photo"><img src="${x.photo}" alt="${esc(x.name)}" width="720" height="900" loading="lazy">${x.brand?`<a class="spk-brand${x.brand.img==='tag-logo.png'?' wide':''}" href="${x.brand.url}" target="_blank" rel="noopener" aria-label="Ir al sitio de ${esc(x.brand.name)}"><img src="${x.brand.img}" alt="${esc(x.brand.name)}"></a>`:''}</figure>
+  `<article class="card glow spk" id="spk-${p.id}-${k}"><figure class="spk-photo"><img src="${x.photo}" alt="${esc(x.name)}" width="720" height="900" loading="lazy">${x.brand?`<a class="spk-brand${x.brand.img==='tag-logo.png'?' wide':''}${x.brand.sq?' sqimg':''}" href="${x.brand.url}" target="_blank" rel="noopener" aria-label="Ir al sitio de ${esc(x.brand.name)}"><img src="${x.brand.img}" alt="${esc(x.brand.name)}"></a>`:''}</figure>
    <div class="spk-body"><span class="label">${ic('mic')}Ponente · Bloque ${+p.n}</span><h3 class="spk-name">${esc(x.name)}</h3><p class="spk-role">${esc(x.role)}</p>
     <div class="spk-tags">${x.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
     <div class="spk-stats">${x.stats.map(([a,b])=>`<div><b>${esc(a)}</b><small>${esc(b)}</small></div>`).join('')}</div>
@@ -1788,14 +1809,14 @@ function spkHTML(p){const S=p.speakers,tbd=S.some(x=>x.tbd);return `<div class="
     ${x.motto?`<p class="spk-motto">${ic('target')}<span>${esc(x.motto)}</span></p>`:''}
     <div class="spk-links">${x.links.map(([n,h,u])=>`<a class="spk-link" href="${u}" target="_blank" rel="noopener">${ic(n==='YouTube'?'play':'at')}<span><small>${n}</small>${esc(h)}</span></a>`).join('')}${x.brand?`<a class="spk-link" href="${x.brand.url}" target="_blank" rel="noopener">${ic('link')}<span><small>Sitio web</small>${esc(x.brand.label)}</span></a>`:''}</div>
    </div></article>`).join('')}</div>`;}
-function learnHTML(p){return `<div class="card learn"><span class="label">${ic('book')}Qué vas a aprender</span>${p.outline?`<ol class="outline">${p.outline.map(([t,d,live],i)=>`<li class="${live?'ol-live':''}">${ic(PIC[p.id].ti[i]||'sparkle')}<div><b><span class="ol-n">${i+1}</span>${esc(t)}${live?'<em class="ol-tag">En vivo</em>':''}</b><span>${esc(d)}</span></div></li>`).join('')}</ol>`:`<ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul>`}</div>`;}
+function learnHTML(p){return `<div class="card learn"><span class="label">${ic('book')}Qué vas a aprender</span>${p.outline?`<ol class="outline">${p.outline.map(([t,d,live,who,tools],i)=>`<li class="${live?'ol-live':''}">${ic(PIC[p.id].ti[i]||'sparkle')}<div><b><span class="ol-n">${i+1}</span>${esc(t)}${live?'<em class="ol-tag">En vivo</em>':''}</b><span>${esc(d)}</span>${tools?`<ol class="ol-tools">${tools.map((x,k)=>`<li><i>${k+1}</i>${esc(x)}</li>`).join('')}</ol>`:''}${who?`<em class="ol-who">${svgI('mic')}${esc(who)}</em>`:''}</div></li>`).join('')}</ol>`:`<ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul>`}</div>`;}
 function labHTML(p){return p.lab?`<div class="card glow pon-lab"><div><span class="label">${ic('monitor')}Continúa después de la ponencia</span><h3>${esc(p.lab.title)}</h3>${metaBadge()}<p>${esc(p.lab.text)}</p></div>
      <div class="lab-steps">${p.lab.steps.map(([a,b],i)=>`<div><b>${ic(['gift','layers','calendar'][i]||'sparkle')}${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>
      <button type="button" class="btn" data-go-lab>Inscríbete al laboratorio virtual</button></div>`:'';}
 const LOC=`<div class="pin-loc">${PIN}<span>Auditorio principal · Institución Universitaria Salazar y Herrera<br><small class="muted">Carrera 70 # 52-49 (Bulevar Libertadores de América # 52-49), barrio Los Colores, Medellín</small></span></div>`;
-function linksHTML(x){return `<div class="spk-links">${x.links.map(([n,h,u])=>`<a class="spk-link" href="${u}" target="_blank" rel="noopener">${ic(n==='YouTube'?'play':'at')}<span><small>${n}</small>${esc(h)}</span></a>`).join('')}${x.brand?`<a class="spk-link" href="${x.brand.url}" target="_blank" rel="noopener">${ic('link')}<span><small>Sitio web</small>${esc(x.brand.label)}</span></a>`:''}</div>`;}
+function linksHTML(x){return `<div class="spk-links">${x.links.map(([n,h,u])=>`<a class="spk-link" href="${u}" target="_blank" rel="noopener">${ic(n==='YouTube'||n==='TikTok'?'play':'at')}<span><small>${n}</small>${esc(h)}</span></a>`).join('')}${x.brand?`<a class="spk-link${x.brand.kind==='Comunidad'?' hot':''}" href="${x.brand.url}" target="_blank" rel="noopener">${ic(x.brand.kind==='Comunidad'?'users':'link')}<span><small>${x.brand.kind||'Sitio web'}</small>${esc(x.brand.label)}</span></a>`:''}</div>`;}
 function heroHTML(p){const S=p.speakers;return `<div class="spk-heroes">${S.map((x,k)=>x.tbd?`<div class="card spk-tbd"><div class="spk-tbd-av">${svgI('users')}</div><div><span class="label">Ponente ${k+1} · Bloque ${+p.n}</span><h4>Por confirmar</h4><p class="muted">Muy pronto anunciamos al segundo ponente de este bloque.</p></div></div>`:
-  `<article class="card glow spk-hero"><div class="sh-top"><figure class="spk-photo"><img src="${x.photo}" alt="${esc(x.name)}" width="720" height="900">${x.brand?`<a class="spk-brand${x.brand.img==='tag-logo.png'?' wide':''}" href="${x.brand.url}" target="_blank" rel="noopener" aria-label="Ir al sitio de ${esc(x.brand.name)}"><img src="${x.brand.img}" alt="${esc(x.brand.name)}"></a>`:''}</figure>
+  `<article class="card glow spk-hero"><div class="sh-top"><figure class="spk-photo"><img src="${x.photo}" alt="${esc(x.name)}" width="720" height="900">${x.brand?`<a class="spk-brand${x.brand.img==='tag-logo.png'?' wide':''}${x.brand.sq?' sqimg':''}" href="${x.brand.url}" target="_blank" rel="noopener" aria-label="Ir al sitio de ${esc(x.brand.name)}"><img src="${x.brand.img}" alt="${esc(x.brand.name)}"></a>`:''}</figure>
    <div class="spk-body"><span class="label">${ic('mic')}${S.length>1?`Ponente ${k+1}`:'Ponente'} · Bloque ${+p.n}</span><h3 class="spk-name">${esc(x.name)}</h3><p class="spk-role">${esc(x.role)}</p>
     <div class="spk-tags">${x.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
     <div class="spk-stats">${x.stats.map(([a,b])=>`<div><b>${esc(a)}</b><small>${esc(b)}</small></div>`).join('')}</div>
@@ -1841,7 +1862,7 @@ function renderPon(id){const p=PONENCIAS.find(x=>x.id===id);
      <div class="pin-loc">${PIN}<span>Auditorio principal · Institución Universitaria Salazar y Herrera<br><small class="muted">Carrera 70 # 52-49 (Bulevar Libertadores de América # 52-49), barrio Los Colores, Medellín</small></span></div>
    </div>
    <div class="kv">
-     <div class="card"><span class="label">${ic('book')}Qué vas a aprender</span>${p.outline?`<ol class="outline">${p.outline.map(([t,d,live],i)=>`<li class="${live?'ol-live':''}">${ic(PIC[p.id].ti[i]||'sparkle')}<div><b><span class="ol-n">${i+1}</span>${esc(t)}${live?'<em class="ol-tag">En vivo</em>':''}</b><span>${esc(d)}</span></div></li>`).join('')}</ol>`:`<ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul>`}</div>
+     <div class="card"><span class="label">${ic('book')}Qué vas a aprender</span>${p.outline?`<ol class="outline">${p.outline.map(([t,d,live,who,tools],i)=>`<li class="${live?'ol-live':''}">${ic(PIC[p.id].ti[i]||'sparkle')}<div><b><span class="ol-n">${i+1}</span>${esc(t)}${live?'<em class="ol-tag">En vivo</em>':''}</b><span>${esc(d)}</span>${tools?`<ol class="ol-tools">${tools.map((x,k)=>`<li><i>${k+1}</i>${esc(x)}</li>`).join('')}</ol>`:''}${who?`<em class="ol-who">${svgI('mic')}${esc(who)}</em>`:''}</div></li>`).join('')}</ol>`:`<ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul>`}</div>
      <div class="card"><span class="label">${ic('bag')}Te llevas</span><p>${esc(p.takes)}</p></div>
      <div class="card"><span class="label">${ic('users')}Para quién</span><p>${esc(p.who)}</p></div>
    </div>

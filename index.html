@@ -1097,6 +1097,38 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
 .caps-cta{justify-self:start;text-decoration:none}
 @media (max-width:980px){.caps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.caps-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== Inicio del registro: pregunta de participación ===== */
+.reg-start{display:grid;gap:14px;padding:clamp(16px,2.4vw,24px);border-radius:20px;border:1px solid var(--cyan);background:linear-gradient(140deg,rgba(11,92,255,.22),rgba(2,10,36,.5));box-shadow:0 0 30px -12px rgba(25,227,248,.8)}
+.rs-head{display:grid;gap:4px}
+.rs-badge{justify-self:start;font:700 10.5px var(--f-tech);letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(25,227,248,.15);color:var(--cyan);border:1px solid rgba(25,227,248,.5)}
+.rs-head h3{margin:4px 0 0;font-family:var(--f-disp);font-size:clamp(24px,2.6vw,32px);text-transform:uppercase}
+.rs-head p{margin:0;font-size:14.5px}
+.reg-start .reg-types{gap:10px!important}
+.reg-start .rtype{grid-template-columns:auto auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;row-gap:2px;align-items:center;padding:14px 16px;border-radius:14px;transform:none!important}
+.reg-start .rtype::before{content:"";grid-row:1/3;width:22px;height:22px;border-radius:50%;border:2px solid rgba(25,227,248,.7);box-sizing:border-box;transition:all .2s}
+.reg-start .rtype:has(input:checked)::before{border:7px solid var(--cyan);background:#fff}
+.reg-start .rtype .ico{grid-row:1/3;width:40px;height:40px;border-radius:12px}
+.reg-start .rtype b{font-size:19px;align-self:end}
+.reg-start .rtype span{grid-column:3;font-size:13px;align-self:start}
+.reg-start:has(input:checked){border-color:rgba(25,227,248,.5);box-shadow:none}
+.lab-only{margin:6px 0 0;padding:12px 14px;border-radius:14px;border:1px dashed var(--line-strong);color:var(--soft);font-size:14px}
+.lab-only b{color:#fff}
+.linkbtn{appearance:none;border:0;background:none;padding:0;color:var(--cyan);font:600 14px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.lab-back{justify-self:start;margin-bottom:4px}
+/* ===== Invitación al laboratorio tras el registro ===== */
+.lab-invite{display:grid;gap:12px;padding:clamp(18px,2.6vw,28px);border-radius:22px;border:2px dashed rgba(255,138,61,.7);background:linear-gradient(140deg,rgba(255,138,61,.12),rgba(11,92,255,.14) 60%,rgba(2,10,36,.5));box-shadow:0 0 40px -14px rgba(255,138,61,.8)}
+.li-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.li-top img{height:44px;width:auto}
+.li-tag{font:700 11px var(--f-tech);letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:#ff8a3d;color:#1b0b00}
+.lab-invite h3{margin:0;font-family:var(--f-disp);font-size:clamp(24px,3vw,34px);text-transform:uppercase;line-height:1.05}
+.lab-invite p{margin:0;color:var(--soft);font-size:15px;line-height:1.55}.lab-invite p b{color:#fff}
+.li-facts{display:flex;flex-wrap:wrap;gap:8px}
+.li-facts span{display:inline-flex;align-items:center;padding:7px 12px;border-radius:12px;background:rgba(2,10,36,.55);border:1px solid rgba(255,138,61,.45);font-size:13.5px;color:#fff}
+.li-facts .ico{color:#ffb27a}
+.li-note{font-size:13.5px!important;padding:10px 12px;border-radius:12px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.45)}
+.li-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#labInvite:not([hidden]) ~ .lab-only{display:none}
 </style>
 
 </head>
@@ -1235,17 +1267,8 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
 <section class="panel" id="p-registro" role="tabpanel" aria-labelledby="t-registro" hidden>
   <div class="sec-head">
     <span class="eyebrow">Registro</span>
-    <h2>Regístrate en <span class="hl">dos pasos</span></h2>
-    <p class="lead">Son dos registros distintos e independientes. El primero es para asistir a Nexxa Expo; el segundo es opcional, para un laboratorio que se hace después del evento.</p>
-  </div>
-  <ol class="reg-steps">
-    <li class="rstep main sel" data-step="expo" role="button" tabindex="0" aria-pressed="true"><span class="rs-n">1</span><div><span class="rs-tag">Para asistir · recomendado</span><em class="rs-sel">✓ Llenando este registro</em><em class="rs-go">Toca para llenar este registro ›</em><b>Nexxa Expo · 4 ponencias</b><span>Presencial · viernes 20 de noviembre, 3:00 a 8:00 p. m. · Auditorio principal · 200 cupos</span></div></li>
-    <li class="rstep opt" data-step="lab" role="button" tabindex="0" aria-pressed="false"><span class="rs-n">2</span><div><span class="rs-tag opt">Opcional · evento posterior</span><em class="rs-sel">✓ Llenando este registro</em><em class="rs-go">Toca para inscribirte ›</em><b>Laboratorio virtual de Meta Ads</b><span>Virtual · después de Nexxa Expo · lo organiza y dicta <strong>TAG Marketing Digital</strong>, que confirma la fecha</span></div></li>
-  </ol>
-  <div class="reg-faq">
-    <div><b>¿El laboratorio es obligatorio?</b><span>No. Es opcional: puedes ir solo a Nexxa Expo.</span></div>
-    <div><b>¿Puedo inscribirme en los dos?</b><span>Sí. Haces un registro para cada uno, en el orden que quieras.</span></div>
-    <div><b>¿Puedo ir solo al laboratorio?</b><span>Sí. Es un evento aparte, no necesitas el registro a Nexxa Expo.</span></div>
+    <h2>Regístrate a <span class="hl">Nexxa Expo</span></h2>
+    <p class="lead">Presencial · viernes 20 de noviembre, de 3:00 a 8:00 p. m. · Auditorio principal · 200 cupos. Toma unos 3 minutos.</p>
   </div>
 
   <div class="reg-switch" role="tablist" aria-label="Tipo de registro">
@@ -1259,9 +1282,9 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
       <div class="cupo-bar"><i id="cupoBar"></i></div>
       <p class="ses-note" id="sesLive"><span class="live-dot off"></span>Conectando con los cupos…</p>
     </div>
-    <div>
-      <span class="label">Paso 1 · ¿Cómo participas?</span>
-      <div class="reg-types reg-types2" role="radiogroup" aria-label="Tipo de registro" style="margin-top:12px">
+    <div class="reg-start" id="regStart">
+      <div class="rs-head"><span class="rs-badge">Para empezar</span><h3>¿Cómo vas a participar?</h3><p class="muted">Elige una opción y te mostramos el formulario que te corresponde.</p></div>
+      <div class="reg-types reg-types2" role="radiogroup" aria-label="Tipo de registro">
         <label class="rtype"><input type="radio" name="rtipo" value="academica"><i class="ico"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></i><b>Comunidad académica</b><span>Estudiantes, egresados, docentes y personal de la Institución Universitaria Salazar y Herrera.</span></label>
         <label class="rtype"><input type="radio" name="rtipo" value="externo"><i class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.4c3 .2 5.5 2.6 5.5 5.6"/></svg></i><b>Público externo</b><span>Emprendedores, empresarios y cualquier persona que quiera vender en línea.</span></label>
       </div>
@@ -1353,6 +1376,17 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
       <button class="btn" type="button" id="regAgain">Registrar a otra persona</button>
     </div>
 
+    <aside class="lab-invite" id="labInvite" hidden aria-label="Invitación al laboratorio virtual de Meta Ads">
+      <div class="li-top"><span class="li-tag">Después de Nexxa Expo · opcional · virtual</span><img src="tag-logo.png" alt="TAG Marketing Digital" width="557" height="263"></div>
+      <h3>¿Quieres ir más allá? Inscríbete también al <span class="hl">laboratorio virtual de Meta Ads</span></h3>
+      <p>Es un <b>evento posterior</b>: no se realiza el 20 de noviembre, sino después de Nexxa Expo, de forma virtual. Lo organiza y dicta <b>TAG Marketing Digital</b>, que confirma la fecha. Profundiza lo que verás en la ponencia 2 con práctica guiada.</p>
+      <div class="li-facts"><span><i class="ico" data-ic="calendar"></i>Fecha: después del evento</span><span><i class="ico" data-ic="monitor"></i>Virtual, por etapas</span><span><i class="ico" data-ic="gift"></i>Etapa 1 sin costo</span></div>
+      <p class="li-note">Tu registro a Nexxa Expo ya está listo. Este es <b>otro registro aparte</b> y no es obligatorio.</p>
+      <div class="li-btns"><button type="button" class="cta-reg" onclick="window.goLab&&goLab()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Inscribirme al laboratorio</button><button type="button" class="btn" onclick="document.getElementById('labInvite').hidden=true">No, gracias</button></div>
+    </aside>
+
+    <p class="lab-only">¿Solo te interesa el <b>laboratorio virtual de Meta Ads</b> (evento posterior, de TAG Marketing Digital)? <button type="button" class="linkbtn" onclick="window.goLab&&goLab()">Inscríbete aquí ›</button></p>
+
     <section class="admin" id="regAdmin" hidden aria-label="Panel de organizadores">
       <div class="admin-head">
         <div><span class="label">Solo organizadores</span><h3>Registros y segmentación</h3></div>
@@ -1366,10 +1400,11 @@ body.on-registro .tb-reg{animation:none;opacity:.8}
   </div>
 
   <div class="reg-wrap" id="labWrap" hidden>
+    <button type="button" class="linkbtn lab-back" onclick="document.getElementById('rs-expo').click();document.getElementById('expoWrap').scrollIntoView({behavior:'smooth',block:'start'})">‹ Volver al registro de Nexxa Expo</button>
     <div class="card glow lab-intro">
-      <div class="lab-intro-head"><img src="tag-logo.png" alt="TAG Marketing Digital" class="lab-tag" width="557" height="263"><div><span class="label">Paso 2 · opcional · evento posterior</span><h3>Laboratorio virtual de Meta Ads</h3><span class="lab-by">Organiza y dicta: <b>TAG Marketing Digital</b></span><i class="meta-badge" data-meta></i></div></div>
+      <div class="lab-intro-head"><img src="tag-logo.png" alt="TAG Marketing Digital" class="lab-tag" width="557" height="263"><div><span class="label">Evento posterior · opcional</span><h3>Laboratorio virtual de Meta Ads</h3><span class="lab-by">Organiza y dicta: <b>TAG Marketing Digital</b></span><i class="meta-badge" data-meta></i></div></div>
       <p>Una práctica guiada para diseñar campañas que traigan tráfico y contactos calificados. Se realiza <b>después de Nexxa Expo</b>, de forma virtual, y profundiza lo que verás en la ponencia 2.</p>
-      <div class="lab-note"><i class="ico" data-ic="sparkle"></i><span><b>Es opcional e independiente.</b> Este registro no reemplaza el de Nexxa Expo: si quieres asistir a las ponencias del 20 de noviembre, haz también el paso 1.</span></div>
+      <div class="lab-note"><i class="ico" data-ic="sparkle"></i><span><b>Es opcional e independiente.</b> Este registro no reemplaza el de Nexxa Expo: si quieres asistir a las ponencias del 20 de noviembre, haz también el registro a Nexxa Expo.</span></div>
       <div class="lab-steps lab-steps-row"><div><b><i class="ico" data-ic="monitor"></i>Modalidad</b><span>Virtual, por etapas.</span></div><div><b><i class="ico" data-ic="gift"></i>Etapa 1</b><span>Sin costo.</span></div><div><b><i class="ico" data-ic="layers"></i>Etapas siguientes</b><span>A disposición de TAG Marketing Digital.</span></div><div><b><i class="ico" data-ic="calendar"></i>Fecha</b><span>Después del evento; la confirma TAG Marketing Digital y te avisamos.</span></div></div>
     </div>
     <div class="reg-banner" id="labBanner" hidden></div>
@@ -1954,9 +1989,9 @@ function done(rec){form.hidden=true;const d=q('#regDone');d.hidden=false;q('#don
   const ok=rec.estado==='Cupo confirmado';
   q('#doneTitle').textContent=ok?`¡Listo, ${rec.nombres}! Tu cupo está reservado`:`${rec.nombres}, quedaste en lista de espera`;
   q('#doneNote').textContent=ok?'Presenta este código en la entrada del auditorio.':'El auditorio se llenó. Si se libera un cupo te avisamos con este código.';
-  q('#doneList').innerHTML='<li>✔ Paso 1 listo: las 4 ponencias en el auditorio principal</li>'+'<li class="dl-next"><b>Paso 2 (opcional):</b> laboratorio virtual de Meta Ads, un evento posterior que dicta TAG Marketing Digital. <button type="button" class="btn" onclick="window.goLab&&goLab()">Inscribirme también al laboratorio</button></li>';
+  q('#doneList').innerHTML='<li>✔ Las 4 ponencias en el auditorio principal · 20 de noviembre</li>';{const li=document.getElementById('labInvite');if(li)li.hidden=false;}
   window.NXTicket&&NXTicket.show(d,rec,'expo');d.scrollIntoView({behavior:'smooth',block:'center'});}
-q('#regAgain').addEventListener('click',()=>{form.reset();form.classList.remove('was-validated');etapa=null;applyVis();msg('');q('#regDone').hidden=true;form.hidden=false;form.scrollIntoView({behavior:'smooth',block:'start'});});
+q('#regAgain').addEventListener('click',()=>{{const li=document.getElementById('labInvite');if(li)li.hidden=true;}form.reset();form.classList.remove('was-validated');etapa=null;applyVis();msg('');q('#regDone').hidden=true;form.hidden=false;form.scrollIntoView({behavior:'smooth',block:'start'});});
 
 /* panel de organizadores */
 let ROWS=[];

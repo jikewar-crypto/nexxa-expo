@@ -1151,6 +1151,9 @@ ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radi
 @media (max-width:1100px){.spk-duo .sh-top{grid-template-columns:minmax(0,1fr)}.spk-duo .sh-top .spk-photo{max-width:260px}}
 @media (max-width:820px){.spk-duo .spk-heroes{grid-template-columns:minmax(0,1fr)}.spk-duo .sh-top{grid-template-columns:minmax(0,200px) minmax(0,1fr)}.duo-b{grid-template-columns:minmax(0,1fr)!important}}
 @media (max-width:560px){.spk-duo .sh-top{grid-template-columns:minmax(0,1fr)}}
+
+@media (min-width:901px){.inv-partners{grid-template-columns:repeat(6,minmax(0,1fr))!important}}
+.inv-partners img.iac,.ali-logo img.ali-sq.iac,img.iac{border-radius:18px;box-shadow:0 0 18px -4px rgba(25,227,248,.6)}
 </style>
 
 </head>
@@ -1213,6 +1216,7 @@ ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radi
         <a class="inv-link" href="https://tagdigital.com.co/" target="_blank" rel="noopener" aria-label="Ir al sitio de TAG Digital"><span class="wd-box"><img class="tag-logo" src="tag-logo.png" alt="TAG Marketing Digital" width="557" height="263"></span><span class="go">Clic para ingresar</span></a>
         <a class="inv-link" href="https://jademind.com.co/" target="_blank" rel="noopener" aria-label="Ir al sitio de JadeMind"><img class="sq" src="inv-jademind.png" alt="JadeMind" width="597" height="700"><span class="go">Clic para ingresar</span></a>
         <a class="inv-link" href="https://www.estrategasia.com" target="_blank" rel="noopener" aria-label="Ir al sitio de Estrategas IA"><img class="sq estr" src="inv-estrategas.png" alt="Estrategas IA" width="400" height="397"><span class="go">Clic para ingresar</span></a>
+        <a class="inv-link" href="https://www.skool.com/iacommerce/about" target="_blank" rel="noopener" aria-label="Ir a la comunidad de IA Commerce"><img class="sq iac" src="brand-iacommerce.jpg" alt="IA Commerce" width="256" height="256"><span class="go">Clic para ingresar</span></a>
       </div>
     </div>
   </div>
@@ -1786,7 +1790,8 @@ const ALIADOS=[
  {k:'Ponencias 1 y 3',name:'Master Shop',img:'inv-mastershop.png',cls:'wd',text:'Invita a los ponentes de dropshipping y dicta la capacitación de su herramienta 360.',url:'https://mastershop.com/co'},
  {k:'Ponencia 2 · Laboratorio',name:'TAG Digital',img:'tag-logo.png',cls:'tag',text:'Agencia de marketing digital. Diseña la ponencia de Meta Ads y el laboratorio virtual.',url:'https://tagdigital.com.co/'},
  {k:'Ponencia 4',name:'JadeMind',img:'inv-jademind.png',cls:'sq',text:'Inteligencia artificial para potenciar emprendimientos físicos y digitales.',url:'https://jademind.com.co/'},
- {k:'Ponencia 1',name:'Estrategas IA',img:'inv-estrategas.png',cls:'sq',text:'Enseña dropshipping en Latinoamérica y crea agentes de IA que montan tiendas, venden por WhatsApp y producen videos y campañas en Meta.',url:'https://www.estrategasia.com'}
+ {k:'Ponencia 1',name:'Estrategas IA',img:'inv-estrategas.png',cls:'sq',text:'Enseña dropshipping en Latinoamérica y crea agentes de IA que montan tiendas, venden por WhatsApp y producen videos y campañas en Meta.',url:'https://www.estrategasia.com'},
+ {k:'Ponencia 1',name:'IA Commerce',img:'brand-iacommerce.jpg',cls:'sq iac',text:'Comunidad de ecommerce de Carlos Mora: herramientas, agentes de IA y plantillas para vender de forma profesional y automatizada en Mercado Libre, dropshipping y marca privada.',url:'https://www.skool.com/iacommerce/about'},
 ];
 const PIN='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19E3F8" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 const $=s=>document.querySelector(s);

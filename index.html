@@ -849,6 +849,66 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
 .inv-partners .inv-link{width:100%}.inv-partners .go{font-size:10.5px!important;letter-spacing:.1em!important;padding:7px 11px}
 .inv-partners .wd{height:clamp(24px,2.4vw,34px);max-width:100%}.inv-partners img.tag-logo{height:clamp(40px,4.2vw,58px)}.inv-partners .sq{height:clamp(68px,7vw,96px)}}
 @media (max-width:760px){.inv-partners .inv-link:last-child:nth-child(odd){grid-column:1/-1}}
+
+/* ===== Ponentes ===== */
+ol.outline{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ol.outline li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:12px;border-radius:14px;border:1px solid rgba(25,227,248,.18);background:rgba(2,10,36,.35)}
+ol.outline li .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;background:rgba(25,227,248,.08);border:1px solid rgba(25,227,248,.35)}
+ol.outline b{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:var(--f-disp);font-size:18px;font-weight:600;color:#fff;line-height:1.15}
+ol.outline span{color:var(--soft);font-size:14.5px;line-height:1.5}
+.ol-n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--electric);font:700 12px var(--f-tech)!important;color:#fff!important}
+.ol-live{border-color:rgba(255,59,107,.6)!important;background:linear-gradient(120deg,rgba(255,59,107,.14),rgba(2,10,36,.35))!important}
+.ol-tag{font-style:normal;font:700 10px var(--f-tech);letter-spacing:.16em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:#ff3b6b;color:#fff;box-shadow:0 0 12px rgba(255,59,107,.7)}
+.spk-sec{grid-column:1/-1;display:grid;gap:14px;margin-top:6px}
+.spk-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.spk-count{font:600 11px var(--f-tech);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.spk{display:grid!important;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(18px,3vw,36px)!important;align-items:start;padding:clamp(16px,2.4vw,28px)!important}
+.spk-photo{margin:0;position:relative;border-radius:20px;padding:6px;background:linear-gradient(160deg,rgba(25,227,248,.85),rgba(11,92,255,.7) 50%,rgba(139,92,246,.8));box-shadow:0 0 40px -6px rgba(25,227,248,.6)}
+.spk-photo>img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:15px}
+.spk-photo::after{content:"";position:absolute;inset:6px;border-radius:15px;background:linear-gradient(180deg,transparent 55%,rgba(2,10,36,.75));pointer-events:none}
+.spk-brand{position:absolute;z-index:2;right:18px;bottom:18px;width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:rgba(2,6,23,.6);backdrop-filter:blur(6px);box-shadow:0 0 20px -4px rgba(139,92,246,.9)}
+.spk-brand img{width:56px;height:auto}
+.spk-body{display:grid;gap:14px;min-width:0}
+.spk-name{font-family:var(--f-disp);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.4vw,56px);line-height:.95;margin:2px 0 0;letter-spacing:.01em;background:linear-gradient(90deg,#fff 30%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.spk-role{margin:-6px 0 0;font-size:17px;color:#fff;font-weight:500}
+.spk-tags{display:flex;gap:8px;flex-wrap:wrap}
+.spk-tags span{padding:6px 12px;border-radius:999px;border:1px solid rgba(25,227,248,.5);background:rgba(25,227,248,.08);font:600 12.5px var(--f-body);color:#d8fbff}
+.spk-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.spk-stats div{padding:12px 14px;border-radius:14px;background:linear-gradient(120deg,rgba(11,92,255,.35),rgba(25,227,248,.06));border:1px solid var(--line-strong);display:grid;gap:2px}
+.spk-stats b{font-family:var(--f-tech);font-size:clamp(26px,3vw,36px);color:#fff;line-height:1;text-shadow:0 0 12px rgba(25,227,248,.7)}
+.spk-stats small{color:var(--soft);font-size:13px}
+.spk-bio{margin:0;color:var(--soft);font-size:15.5px;line-height:1.6}
+.spk-creds{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.spk-creds li{display:flex;align-items:flex-start;gap:4px;font-size:14.5px;color:#e6f7ff}
+.spk-creds .ico{margin-top:1px}
+.spk-agents{display:grid;gap:10px;padding:14px;border-radius:16px;border:1px solid rgba(139,92,246,.45);background:linear-gradient(120deg,rgba(139,92,246,.16),rgba(2,10,36,.3))}
+.spk-agents>div{display:flex;flex-wrap:wrap;gap:8px}
+.spk-agents>div span{display:inline-flex;align-items:center;padding:7px 11px;border-radius:12px;background:rgba(2,10,36,.55);border:1px solid rgba(25,227,248,.25);font-size:13.5px;color:#fff}
+.spk-agents .ico{color:#c4b5fd}
+.spk-quote{margin:0;display:flex;gap:10px;align-items:center;font-family:var(--f-disp);font-size:clamp(20px,2.2vw,26px);font-weight:600;color:#fff;font-style:italic}
+.spk-quote svg{flex:none;width:30px;height:30px;fill:none;stroke:var(--cyan);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(25,227,248,.8))}
+.spk-links{display:flex;gap:10px;flex-wrap:wrap}
+.spk-link{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:14px;border:1px solid var(--line-strong);background:rgba(2,10,36,.5);text-decoration:none;color:#fff;font-size:14px;transition:border-color .2s,transform .15s}
+.spk-link:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.spk-link span{display:grid;line-height:1.2}
+.spk-link small{font:600 9.5px var(--f-tech);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.spk-tbd{display:flex!important;flex-direction:row!important;align-items:center;gap:16px!important;border-style:dashed!important;opacity:.85}
+.spk-tbd-av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:1px dashed var(--cyan);color:var(--cyan)}
+.spk-tbd-av svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.6}
+.spk-tbd h4{margin:2px 0;font-family:var(--f-disp);font-size:22px;text-transform:uppercase}
+.spk-tbd p{margin:0;font-size:14px}
+@media (max-width:820px){.spk{grid-template-columns:minmax(0,1fr)!important}.spk-photo{max-width:340px;width:100%;justify-self:center}}
+
+.spk-mini{display:grid;gap:10px;padding:14px;border-radius:16px;border:1px solid var(--line-strong);background:rgba(2,10,36,.4)}
+.sm-row{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;border:1px solid transparent;background:rgba(11,92,255,.12);width:100%}
+.sm-row:hover{border-color:var(--cyan)}
+.sm-row.tbd{cursor:default;background:transparent;border:1px dashed rgba(25,227,248,.3)}
+.sm-av{flex:none;width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid var(--cyan);box-shadow:0 0 14px -2px rgba(25,227,248,.8);display:grid;place-items:center;color:var(--cyan)}
+.sm-av svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6}
+.sm-row span{display:grid;gap:1px;min-width:0}
+.sm-row b{font-family:var(--f-disp);font-size:19px;font-weight:700;text-transform:uppercase;color:#fff}
+.sm-row small{font-size:13px;color:var(--soft)}
+.sm-row em{margin-left:auto;font-style:normal;font:600 11px var(--f-tech);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);white-space:nowrap}
 </style>
 
 </head>
@@ -1253,10 +1313,11 @@ flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
 bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.7.5 1 1.2 1 2.1h5c0-.9.3-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
 rocket:'<path d="M12 15l-3-3c1.5-4.5 4.5-8 10-9-1 5.5-4.5 8.5-9 10z"/><path d="M9 12l-4 1-2 3 4 .5M12 15l-1 4-3 2-.5-4"/><circle cx="15" cy="9" r="1.5"/>'
 };
+Object.assign(ICONS,{grad:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',at:'<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>',play:'<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/>',quote:'<path d="M7 7h4v4c0 3-1.5 5-4 6M15 7h4v4c0 3-1.5 5-4 6"/>',live:'<circle cx="12" cy="12" r="2.5"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8"/>'});
 const svgI=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]||ICONS.sparkle}</svg>`;
 const ic=n=>`<i class="ico">${svgI(n)}</i>`;
 const metaBadge=()=>`<i class="meta-badge" title="Meta Ads">${svgI('megaphone')}META ADS</i>`;
-const PIC={dropshipping:{ic:'box',ti:['box','trophy','search','shield','coins']},meta:{ic:'megaphone',ti:['megaphone','target','image','funnel','chart']},mastershop:{ic:'store',ti:['store','link','truck','coins','calendar']},jademind:{ic:'chip',ti:['chip','chat','refresh','store','sparkle']}};
+const PIC={dropshipping:{ic:'box',ti:['box','trophy','shield','live','rocket']},meta:{ic:'megaphone',ti:['megaphone','target','image','funnel','chart']},mastershop:{ic:'store',ti:['store','link','truck','coins','calendar']},jademind:{ic:'chip',ti:['chip','chat','refresh','store','sparkle']}};
 function fillIcons(root){(root||document).querySelectorAll('.ico[data-ic]').forEach(e=>{e.innerHTML=svgI(e.dataset.ic);e.removeAttribute('data-ic');});(root||document).querySelectorAll('.meta-badge[data-meta]').forEach(e=>{e.outerHTML=metaBadge();});}
 fillIcons();
 </script>
@@ -1269,12 +1330,28 @@ const EVENT_DATE_LABEL='Viernes 20 de noviembre de 2026';
 /* ================= DATOS ================= */
 const TABS=[['evento','El evento'],['registro','Registro'],['ponencias','Ponencias'],['agenda','Agenda'],['aliados','Aliados']];
 const PONENCIAS=[
- {id:'dropshipping',n:'01',q:'Qué vender',ally:'Master Shop',logo:'inv-mastershop.png',logoW:true,by:'Ponentes invitados por Master Shop',
-  title:'Dropshipping: emprende en digital con la mínima inversión',
-  purpose:'Mostrar el dropshipping como una oportunidad real de emprender en digital y generar ingresos sin bodega ni inventario, con la mínima inversión.',
-  topics:['Qué es el dropshipping y por qué permite empezar con poca inversión','Cómo elegir productos ganadores: demanda, margen y diferenciación','Cómo validar un producto antes de invertir en él','Cómo reconocer proveedores confiables: tiempos de entrega, calidad y respaldo','Costos, márgenes, envíos y devoluciones'],
-  takes:'Criterios claros para elegir qué vender y con quién trabajar.',
-  who:'Quien quiere empezar a vender en línea sin un capital grande.'},
+ {id:'dropshipping',n:'01',q:'Qué vender',ally:'Master Shop',logo:'inv-mastershop.png',logoW:true,by:'Bloque 1 · ponentes invitados por Master Shop',
+  title:'De cero a tu primera venta: cómo elegir qué vender y con quién respaldarte',
+  purpose:'Entender el dropshipping sin humo, aprender a elegir y validar un producto ganador, escoger un proveedor que respalde tu marca y ver en vivo cómo un producto queda listo para vender.',
+  topics:['Qué es el dropshipping sin humo','Cómo elegir un producto ganador','Proveeduría de respaldo','En vivo: de producto a tienda lista','Cierre: la ruta de los primeros 7 días'],
+  outline:[
+   ['Qué es el dropshipping sin humo','Vendes sin inventario, el proveedor despacha y tú te enfocas en vender. Mitos y realidades.'],
+   ['Cómo elegir un producto ganador','Los criterios que usamos: problema que resuelve, margen, efecto «wow» y que se pueda mostrar en video. Y cómo validarlo con datos antes de invertir en pauta.'],
+   ['Proveeduría de respaldo','Cómo escoger un proveedor confiable (stock, tiempos de despacho, efectividad de entrega y devoluciones) para que la marca no se caiga en la logística.'],
+   ['En vivo: de producto a tienda lista','Elegimos un producto entre todos y en pocos minutos mostramos cómo queda listo para vender: tienda montada y WhatsApp atendiendo solo.',true],
+   ['Cierre: la ruta de los primeros 7 días','Un plan paso a paso para la primera semana, para que nadie salga con objeciones.']],
+  takes:'Criterios para elegir y validar qué vender, cómo escoger un proveedor confiable y la ruta de tus primeros 7 días.',
+  who:'Quien quiere empezar a vender en línea sin inventario ni un capital grande.',
+  speakers:[
+   {name:'Andrés Estrada',photo:'spk-andres-estrada.jpg',role:'Fundador y CEO de Estrategasia',tags:['Ecommerce','Dropshipping','IA agéntica'],
+    creds:['Ingeniero Electrónico y de Telecomunicaciones','Máster en Administración Financiera (EAFIT)','Máster en Banca y Finanzas (UPF Barcelona)'],
+    stats:[['5','años vendiendo online'],['+270','emprendedores formados en LATAM']],
+    bio:'Lleva 5 años vendiendo en línea y formando una comunidad de más de 270 emprendedores en Latinoamérica. Creó un ecosistema de agentes de IA que operan el ecommerce de punta a punta.',
+    agents:[['chat','Venden y cierran pedidos por WhatsApp'],['store','Montan la tienda y la landing'],['truck','Suben los pedidos a la logística'],['search','Hacen seguimiento a las guías'],['chart','Analizan las campañas']],
+    quote:'Le hablas a tu agente y él ejecuta.',
+    brand:{img:'inv-estrategas.png',name:'Estrategas IA',url:'https://www.estrategasia.com'},
+    links:[['Instagram','@estrategas_ia','https://www.instagram.com/estrategas_ia'],['YouTube','@AndresEstradaR','https://www.youtube.com/@AndresEstradaR']]},
+   {tbd:true}]},
  {id:'meta',n:'02',q:'Cómo atraer clientes',ally:'TAG Digital',logo:'tag-logo.png',by:'Diseñada por la agencia de marketing digital TAG Digital',
   title:'Diseña tráfico y leads calificados con Meta Ads',
   purpose:'Aprender a diseñar campañas en Meta Ads que atraigan tráfico y contactos calificados: personas con intención real de comprar, no solo clics.',
@@ -1301,7 +1378,7 @@ const ALIADOS=[
  {k:'Ponencias 1 y 3',name:'Master Shop',img:'inv-mastershop.png',cls:'wd',text:'Invita a los ponentes de dropshipping y dicta la capacitación de su herramienta 360.',url:'https://mastershop.com/co'},
  {k:'Ponencia 2 · Laboratorio',name:'TAG Digital',img:'tag-logo.png',cls:'tag',text:'Agencia de marketing digital. Diseña la ponencia de Meta Ads y el laboratorio virtual.',url:'https://tagdigital.com.co/'},
  {k:'Ponencia 4',name:'JadeMind',img:'inv-jademind.png',cls:'sq',text:'Inteligencia artificial para potenciar emprendimientos físicos y digitales.',url:'https://jademind.com.co/'},
- {k:'Aliado',name:'Estrategas IA',img:'inv-estrategas.png',cls:'sq',text:'Enseña dropshipping en Latinoamérica y crea agentes de IA que montan tiendas, venden por WhatsApp y producen videos y campañas en Meta.',url:'https://www.estrategasia.com'}
+ {k:'Ponencia 1',name:'Estrategas IA',img:'inv-estrategas.png',cls:'sq',text:'Enseña dropshipping en Latinoamérica y crea agentes de IA que montan tiendas, venden por WhatsApp y producen videos y campañas en Meta.',url:'https://www.estrategasia.com'}
 ];
 const PIN='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19E3F8" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 const $=s=>document.querySelector(s);
@@ -1321,6 +1398,18 @@ function openTab(id,scroll){if(!TABS.some(t=>t[0]===id))id='evento';
 
 /* ================= PONENCIAS ================= */
 function allyMark(p){return p.logo?`<img class="pon-logo${p.logoW?' w':''}" src="${p.logo}" alt="${esc(p.ally)}">`:`<span class="tag-word">TAG <b>DIGITAL</b></span>`;}
+function spkHTML(p){const S=p.speakers;return `<div class="spk-sec"><div class="spk-head"><span class="label">${ic('mic')}Ponentes del bloque ${+p.n}</span><span class="spk-count">${S.filter(x=>!x.tbd).length} de ${S.length} confirmados</span></div>
+  ${S.map(x=>x.tbd?`<div class="card spk-tbd"><div class="spk-tbd-av">${svgI('users')}</div><div><span class="label">Ponente 2</span><h4>Por confirmar</h4><p class="muted">Muy pronto anunciamos al segundo ponente de este bloque.</p></div></div>`:
+  `<article class="card glow spk"><figure class="spk-photo"><img src="${x.photo}" alt="${esc(x.name)}" width="720" height="900" loading="lazy">${x.brand?`<a class="spk-brand" href="${x.brand.url}" target="_blank" rel="noopener" aria-label="Ir al sitio de ${esc(x.brand.name)}"><img src="${x.brand.img}" alt="${esc(x.brand.name)}"></a>`:''}</figure>
+   <div class="spk-body"><span class="label">${ic('mic')}Ponente · Bloque ${+p.n}</span><h3 class="spk-name">${esc(x.name)}</h3><p class="spk-role">${esc(x.role)}</p>
+    <div class="spk-tags">${x.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+    <div class="spk-stats">${x.stats.map(([a,b])=>`<div><b>${esc(a)}</b><small>${esc(b)}</small></div>`).join('')}</div>
+    <p class="spk-bio">${esc(x.bio)}</p>
+    <ul class="spk-creds">${x.creds.map(c=>`<li>${ic('grad')}<span>${esc(c)}</span></li>`).join('')}</ul>
+    <div class="spk-agents"><span class="label">${ic('chip')}Sus agentes de IA</span><div>${x.agents.map(([i,t])=>`<span>${ic(i)}${esc(t)}</span>`).join('')}</div></div>
+    <blockquote class="spk-quote">${svgI('quote')}<span>${esc(x.quote)}</span></blockquote>
+    <div class="spk-links">${x.links.map(([n,h,u])=>`<a class="spk-link" href="${u}" target="_blank" rel="noopener">${ic(n==='YouTube'?'play':'at')}<span><small>${n}</small>${esc(h)}</span></a>`).join('')}${x.brand?`<a class="spk-link" href="${x.brand.url}" target="_blank" rel="noopener">${ic('link')}<span><small>Sitio web</small>estrategasia.com</span></a>`:''}</div>
+   </div></article>`).join('')}</div>`;}
 function renderPon(id){const p=PONENCIAS.find(x=>x.id===id);
   document.querySelectorAll('#ponPick .pon-btn').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id===id)));
   $('#ponDetail').innerHTML=`<div class="pon-detail">
@@ -1328,16 +1417,18 @@ function renderPon(id){const p=PONENCIAS.find(x=>x.id===id);
      <div class="pon-head"><span class="clic-num">${p.n}</span><div><span class="label">${ic(PIC[p.id].ic)}Ponencia ${+p.n} · ${esc(p.q)}</span><h3 class="pon-title">${esc(p.title)}</h3>${p.id==='meta'?metaBadge():''}</div></div>
      <div class="pon-by">${allyMark(p)}<span>${esc(p.by)}</span></div>
      <p class="quote" style="font-size:19px">${esc(p.purpose)}</p>
+     ${p.speakers?`<div class="spk-mini"><span class="label">${ic('mic')}Ponentes</span>${p.speakers.map(x=>x.tbd?`<div class="sm-row tbd"><span class="sm-av">${svgI('users')}</span><span><b>Ponente 2</b><small>Por confirmar</small></span></div>`:`<button type="button" class="sm-row" onclick="document.querySelector('.spk').scrollIntoView({behavior:'smooth',block:'start'})"><img class="sm-av" src="${x.photo}" alt=""><span><b>${esc(x.name)}</b><small>${esc(x.role)}</small></span><em>Ver perfil ›</em></button>`).join('')}</div>`:''}
      <div class="pin-loc">${PIN}<span>Auditorio principal · Institución Universitaria Salazar y Herrera<br><small class="muted">Carrera 70 # 52-49 (Bulevar Libertadores de América # 52-49), barrio Los Colores, Medellín</small></span></div>
    </div>
    <div class="kv">
-     <div class="card"><span class="label">${ic('book')}Qué vas a aprender</span><ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul></div>
+     <div class="card"><span class="label">${ic('book')}Qué vas a aprender</span>${p.outline?`<ol class="outline">${p.outline.map(([t,d,live],i)=>`<li class="${live?'ol-live':''}">${ic(PIC[p.id].ti[i]||'sparkle')}<div><b><span class="ol-n">${i+1}</span>${esc(t)}${live?'<em class="ol-tag">En vivo</em>':''}</b><span>${esc(d)}</span></div></li>`).join('')}</ol>`:`<ul class="clean ti-list">${p.topics.map((t,i)=>`<li>${ic(PIC[p.id].ti[i]||'sparkle')}<span>${esc(t)}</span></li>`).join('')}</ul>`}</div>
      <div class="card"><span class="label">${ic('bag')}Te llevas</span><p>${esc(p.takes)}</p></div>
      <div class="card"><span class="label">${ic('users')}Para quién</span><p>${esc(p.who)}</p></div>
    </div>
    ${p.lab?`<div class="card glow pon-lab"><div><span class="label">${ic('monitor')}Continúa después de la ponencia</span><h3>${esc(p.lab.title)}</h3>${metaBadge()}<p>${esc(p.lab.text)}</p></div>
      <div class="lab-steps">${p.lab.steps.map(([a,b],i)=>`<div><b>${ic(['gift','layers','calendar'][i]||'sparkle')}${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>
      <button type="button" class="btn" data-go-lab>Inscríbete al laboratorio virtual</button></div>`:''}
+   ${p.speakers?spkHTML(p):''}
   </div>`;
   document.querySelectorAll('#ponDetail [data-go-reg]').forEach(b=>b.addEventListener('click',goReg));document.querySelectorAll('#ponDetail [data-go-lab]').forEach(b=>b.addEventListener('click',()=>window.goLab&&window.goLab()));}
 PONENCIAS.forEach(p=>{const b=document.createElement('button');b.type='button';b.className='cbtn pon-btn';b.dataset.id=p.id;

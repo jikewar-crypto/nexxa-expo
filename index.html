@@ -844,6 +844,11 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
 .lv-btn small{font:600 10px var(--f-tech);letter-spacing:.12em;opacity:.9}
 @media (max-width:560px){.lv-btns{display:grid;grid-template-columns:minmax(0,1fr)}.lv-btn{justify-content:center}}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+
+@media (min-width:901px){.inv-partners{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(10px,1.6vw,24px)!important;justify-items:center}
+.inv-partners .inv-link{width:100%}.inv-partners .go{font-size:10.5px!important;letter-spacing:.1em!important;padding:7px 11px}
+.inv-partners .wd{height:clamp(24px,2.4vw,34px);max-width:100%}.inv-partners img.tag-logo{height:clamp(40px,4.2vw,58px)}.inv-partners .sq{height:clamp(68px,7vw,96px)}}
+@media (max-width:760px){.inv-partners .inv-link:last-child:nth-child(odd){grid-column:1/-1}}
 </style>
 
 </head>
@@ -899,6 +904,7 @@ ul.ti-list .ico{width:34px;height:34px;padding:7px;margin:0;border-radius:10px;b
         <a class="inv-link" href="https://mastershop.com/co" target="_blank" rel="noopener" aria-label="Ir al sitio de Master Shop"><span class="wd-box"><img class="wd" src="inv-mastershop.png" alt="Master Shop" width="667" height="115"></span><span class="go">Clic para ingresar</span></a>
         <a class="inv-link" href="https://tagdigital.com.co/" target="_blank" rel="noopener" aria-label="Ir al sitio de TAG Digital"><span class="wd-box"><img class="tag-logo" src="tag-logo.png" alt="TAG Marketing Digital" width="557" height="263"></span><span class="go">Clic para ingresar</span></a>
         <a class="inv-link" href="https://jademind.com.co/" target="_blank" rel="noopener" aria-label="Ir al sitio de JadeMind"><img class="sq" src="inv-jademind.png" alt="JadeMind" width="597" height="700"><span class="go">Clic para ingresar</span></a>
+        <a class="inv-link" href="https://www.estrategasia.com" target="_blank" rel="noopener" aria-label="Ir al sitio de Estrategas IA"><img class="sq estr" src="inv-estrategas.png" alt="Estrategas IA" width="400" height="397"><span class="go">Clic para ingresar</span></a>
       </div>
     </div>
   </div>
@@ -1294,7 +1300,8 @@ const ALIADOS=[
  {k:'Sede',name:'Institución Universitaria Salazar y Herrera',img:'inv-iush.png',cls:'iush',text:'Abre su auditorio principal y convoca a su comunidad académica.',url:'https://www.iush.edu.co/'},
  {k:'Ponencias 1 y 3',name:'Master Shop',img:'inv-mastershop.png',cls:'wd',text:'Invita a los ponentes de dropshipping y dicta la capacitación de su herramienta 360.',url:'https://mastershop.com/co'},
  {k:'Ponencia 2 · Laboratorio',name:'TAG Digital',img:'tag-logo.png',cls:'tag',text:'Agencia de marketing digital. Diseña la ponencia de Meta Ads y el laboratorio virtual.',url:'https://tagdigital.com.co/'},
- {k:'Ponencia 4',name:'JadeMind',img:'inv-jademind.png',cls:'sq',text:'Inteligencia artificial para potenciar emprendimientos físicos y digitales.',url:'https://jademind.com.co/'}
+ {k:'Ponencia 4',name:'JadeMind',img:'inv-jademind.png',cls:'sq',text:'Inteligencia artificial para potenciar emprendimientos físicos y digitales.',url:'https://jademind.com.co/'},
+ {k:'Aliado',name:'Estrategas IA',img:'inv-estrategas.png',cls:'sq',text:'Enseña dropshipping en Latinoamérica y crea agentes de IA que montan tiendas, venden por WhatsApp y producen videos y campañas en Meta.',url:'https://www.estrategasia.com'}
 ];
 const PIN='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19E3F8" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 const $=s=>document.querySelector(s);

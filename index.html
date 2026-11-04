@@ -1154,6 +1154,25 @@ ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radi
 
 @media (min-width:901px){.inv-partners{grid-template-columns:repeat(6,minmax(0,1fr))!important}}
 .inv-partners img.iac,.ali-logo img.ali-sq.iac,img.iac{border-radius:18px;box-shadow:0 0 18px -4px rgba(25,227,248,.6)}
+
+/* ===== Franja de aliados: patrón uniforme ===== */
+.invitan{align-items:stretch!important}
+.inv-partners .inv-link{align-content:start;display:grid!important;grid-template-rows:var(--logo-h,108px) auto;justify-items:center;align-items:center;row-gap:14px!important;padding:6px 4px!important}
+.inv-main{border-right:1px solid var(--line)}
+.inv-main .inv-link{display:grid!important;grid-template-rows:var(--logo-h,108px) auto;justify-items:center;align-items:center;row-gap:14px}
+.inv-main img.imp-logo{margin:0!important;align-self:center}
+.inv-partners .inv-link>img,.inv-partners .inv-link>.wd-box{grid-row:1;align-self:center;justify-self:center;margin:0!important}
+.inv-partners .inv-link>.wd-box{height:100%!important;display:flex;align-items:center;justify-content:center}
+.inv-partners img.iush-sm{height:auto!important;max-height:84px!important;width:auto;max-width:100%}
+.inv-partners .wd{height:auto!important;max-height:34px;width:auto;max-width:100%}
+.inv-partners img.tag-logo{height:auto!important;max-height:62px!important;width:auto;max-width:100%}
+.inv-partners .sq,.inv-partners img.iac,.inv-partners img.estr{height:auto!important;max-height:92px!important;width:auto;max-width:100%}
+.inv-partners .go,.inv-main .go{grid-row:2;align-self:start;justify-self:center;margin:0!important;min-width:0;white-space:nowrap}
+.inv-partners .inv-link:last-child:nth-child(odd){grid-column:auto}
+@media (min-width:901px){.inv-partners{align-items:stretch!important}}
+@media (max-width:760px){:root{--logo-h:92px}.inv-main{border-right:0}.inv-partners .inv-link:last-child:nth-child(odd){grid-column:1/-1}}
+.inv-main{display:block!important;align-self:stretch;padding-top:0!important;padding-bottom:0!important}
+.inv-main .inv-link{align-content:start;padding:6px 4px!important}
 </style>
 
 </head>

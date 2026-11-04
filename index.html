@@ -1360,7 +1360,7 @@ ol.spk-path span{display:block;margin-top:3px;color:var(--soft);font-size:14px;l
 <script>
 /* ================= REGISTRO EN GOOGLE SHEETS (sitio público) ================= */
 /* Pega aquí la URL de la aplicación web de Apps Script (termina en /exec) */
-const SHEETS_URL='https://script.google.com/macros/s/AKfycbzw9MI8VPoulLIT0RMYRn118nRiGcPMn7yRH0KqDCuTJfuAYjYeixQ9-4Tej36_3tFiEQ/exec';
+const SHEETS_URL='https://script.google.com/macros/s/AKfycbz76PDOkiAG3O5eqNaI0zf3SVaOVUD68cttV7m33bAYGxTDnH2VclVeomaR4l_FB7YLcA/exec';
 window.NXS={on:!!SHEETS_URL,
   async post(kind,rec){const r=await fetch(SHEETS_URL,{method:'POST',body:JSON.stringify(Object.assign({kind},rec))});const j=await r.json();if(!j.ok)throw new Error(j.error||'error');return j;},
   async count(){const r=await fetch(SHEETS_URL+'?op=count',{cache:'no-store'});const j=await r.json();return j.confirmados||0;}};

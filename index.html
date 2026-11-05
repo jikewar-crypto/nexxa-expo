@@ -1178,6 +1178,21 @@ ol.ol-tools i{display:grid;place-items:center;width:20px;height:20px;border-radi
 .inv-partners img.nx360{border-radius:50%;box-shadow:0 0 18px -4px rgba(212,175,55,.7)}
 img.nx360{border-radius:50%}
 .spk-brand.wide img[src="inv-mastershop.png"]{width:110px}
+
+/* ===== Test de emprendedor ===== */
+.test-cta{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:center;margin:8px 0 28px;padding:clamp(18px,2.6vw,30px);border-radius:22px;text-decoration:none;color:var(--ink);border:1px solid rgba(255,77,126,.5);background:radial-gradient(circle at 85% 20%,rgba(255,77,126,.18),transparent 55%),linear-gradient(140deg,rgba(11,92,255,.28),rgba(2,10,36,.6));box-shadow:0 0 40px -14px rgba(255,77,126,.7);transition:transform .2s,box-shadow .2s}
+.test-cta:hover{transform:translateY(-3px);box-shadow:0 0 50px -10px rgba(25,227,248,.8)}
+.tc-txt{display:grid;gap:10px;justify-items:start}
+.tc-tag{font:700 11px var(--f-tech);letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:#FF4D7E;color:#fff}
+.tc-txt h3{margin:0;font-family:var(--f-disp);font-size:clamp(30px,3.6vw,46px);text-transform:uppercase;line-height:1}
+.tc-txt p{margin:0;color:var(--soft);font-size:15.5px;line-height:1.55}
+.tc-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.tc-perf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tc-perf span{display:grid;gap:2px;padding:14px;border-radius:14px;border:1px solid var(--c);background:rgba(2,10,36,.55);font-family:var(--f-disp);font-weight:700;font-size:22px;text-transform:uppercase;color:var(--c);box-shadow:0 0 18px -8px var(--c)}
+.tc-perf small{font:500 13px var(--f-body);text-transform:none;color:var(--soft)}
+.tb-test{text-decoration:none;color:#FF8FB0!important;border-color:rgba(255,77,126,.6)!important}
+@media (max-width:1100px){.tb-test{display:none}}
+@media (max-width:760px){.test-cta{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 </head>
@@ -1187,7 +1202,7 @@ img.nx360{border-radius:50%}
   <div class="wrap tb-in">
     <a class="tb-logo" href="#evento" aria-label="Nexxa Expo · inicio"><img src="expo-logo.png" alt="Nexxa Expo by Impulso" width="840" height="263"></a>
     <div class="tb-info"><span><b>Vie 20 nov</b> · 3:00 p. m.</span><span class="tb-cupo"><i></i>Quedan <b id="tbCupo">200</b> cupos</span></div>
-    <div class="tb-act"><button class="tb-lab" type="button" data-go-lab>Laboratorio Meta Ads · opcional</button><button class="tb-reg" type="button" data-go-reg><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Regístrate aquí</span></button></div>
+    <div class="tb-act"><a class="tb-lab tb-test" href="test.html">Test: ¿qué emprendedor eres?</a><button class="tb-lab" type="button" data-go-lab>Laboratorio Meta Ads · opcional</button><button class="tb-reg" type="button" data-go-reg><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Regístrate aquí</span></button></div>
   </div>
 </div>
 <header class="hero">
@@ -1282,6 +1297,12 @@ img.nx360{border-radius:50%}
 
 
 
+  <a class="test-cta" href="test.html">
+    <div class="tc-txt"><span class="tc-tag">Test gratis · 2 minutos</span><h3>¿Qué tipo de <span class="hl">emprendedor</span> eres?</h3>
+      <p>Responde 12 frases, descubre si eres Tiburón, Imán, Roble o Brújula, qué podrías vender, qué ponencia no te puedes perder y descarga tu plan de arranque en PDF a tu nombre.</p>
+      <span class="cta-reg tc-btn"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Hacer el test</span></div>
+    <div class="tc-perf" aria-hidden="true"><span style="--c:#19E3F8">Tiburón<small>Decide rápido y prueba</small></span><span style="--c:#FF4D7E">Imán<small>Conecta y convence</small></span><span style="--c:#35E39B">Roble<small>Es constante y cuida</small></span><span style="--c:#FFC24B">Brújula<small>Piensa y organiza</small></span></div>
+  </a>
   <div class="pocket">
     <div class="phone" aria-hidden="true">
       <div class="phone-notch"></div>

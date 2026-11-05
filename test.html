@@ -1,0 +1,722 @@
+<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>¿Qué tipo de emprendedor eres?</title>
+<meta name="description" content="Test de Nexxa Expo: descubre qué tipo de emprendedor eres, qué podrías vender y recibe tu plan de arranque en PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;700&display=swap">
+<style>
+/* Concepto: el test vive en el cielo de la landing; cada perfil es una constelación que se traza con tus respuestas.
+   Colores, tipos y paneles tomados de nexxaexpo2026.online. */
+:root{
+  --night:#020A24;--deep:#061440;--electric:#0B5CFF;--cyan:#19E3F8;--ink:#F4F8FF;--muted:#9FB2DA;--soft:#C9D6F2;
+  --line:rgba(25,227,248,.16);--line-strong:rgba(25,227,248,.42);--panel:rgba(10,26,78,.55);--panel-solid:#0A1A4E;
+  --pink:#FF4D7E;--ok:#35E39B;--warn:#FFC24B;--c:var(--cyan);
+  --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-disp:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;
+  --glow-c:0 0 6px rgba(25,227,248,.85),0 0 22px rgba(25,227,248,.55),0 0 48px rgba(11,92,255,.45);
+  --sale:cubic-bezier(.2,.9,.25,1.12);
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));--gutter-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+html,body{height:100%}
+#app{min-height:100%;display:flex;flex-direction:column;position:relative;z-index:1}
+body{background:var(--night);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;overflow-x:hidden}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--f-disp);font-weight:700;letter-spacing:.3px;line-height:.98;text-transform:uppercase;text-wrap:balance}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+h1:focus,[tabindex="-1"]:focus{outline:none}
+#cielo,#chispas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#cielo{z-index:0}
+#chispas{z-index:20}
+.ac{background:linear-gradient(90deg,#7FF3FF,var(--c) 40%,#5B8CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.perfil-acento{color:var(--c);text-shadow:0 0 24px color-mix(in srgb,var(--c) 55%,transparent)}
+.tech{font-family:var(--f-disp);font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.vista{flex:1 0 auto;display:flex;flex-direction:column;min-width:0;width:100%}
+.ancho{width:100%;max-width:1120px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.bar{background:rgba(2,10,36,.82);border-bottom:1px solid var(--line-strong);box-shadow:0 0 18px rgba(25,227,248,.12)}
+.bar-in{min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.marca{font-family:var(--f-disp);font-weight:700;font-size:23px;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 0 14px rgba(25,227,248,.6)}
+.marca b{color:var(--cyan);font-weight:700}
+.logo{height:44px;width:auto;display:block}
+.marca,.bar small{white-space:nowrap}
+.bar small{font-size:15px;color:var(--soft)}
+
+/* Botones */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;background:linear-gradient(90deg,#19E3F8,#4F8BFF);color:var(--night);font-family:var(--f-disp);font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 0 24px -4px rgba(25,227,248,.9);transition:transform .25s var(--sale),box-shadow .25s;text-align:center}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 34px -2px rgba(25,227,248,1)}
+.btn:active{transform:scale(.97)}
+.btn.sec{background:var(--panel-solid);color:var(--ink);border:1px solid var(--line-strong);box-shadow:none}
+.btn.sec:hover{box-shadow:0 0 20px -4px rgba(25,227,248,.8)}
+.btn[disabled]{opacity:.55;cursor:wait}
+.emerge{animation:emerge .5s var(--sale) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes emerge{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* Inicio */
+#inicio .ini{flex:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;padding-block:40px}
+.ini-t{display:flex;flex-direction:column;gap:20px;min-width:0}
+.ini-t h1{font-size:clamp(46px,5.6vw,76px)}
+.ini-t>p{font-size:clamp(18px,1.5vw,21px);color:var(--soft);max-width:30em}
+.ini-t .btn{align-self:flex-start}
+.fila-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.fila-cta span{font-size:15px;color:var(--soft)}
+.tiras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+.tira{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:16px;text-align:left;min-height:236px;transition:border-color .2s,box-shadow .2s,transform .25s var(--sale)}
+.tira b{font-family:var(--f-disp);font-weight:700;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);line-height:1.1}
+.tira small{font-size:15px;line-height:1.3;color:var(--soft)}
+.tira .bicho{position:absolute;right:-6px;bottom:-14px;width:168px;height:168px;opacity:.82;transition:transform .4s var(--sale),opacity .25s}
+.tira .bicho svg{display:block;width:100%;height:100%;filter:drop-shadow(0 0 6px var(--c))}
+.tira:hover,.tira:focus-visible,.tira.salta{border-color:var(--c);box-shadow:0 0 22px -6px var(--c);transform:translateY(-3px)}
+.tira:hover .bicho,.tira:focus-visible .bicho,.tira.salta .bicho{transform:translateY(-14px) scale(1.08);opacity:1}
+
+/* Pasos */
+.paso{flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:860px;padding-block:32px 56px}
+.paso h1{font-size:clamp(40px,5.6vw,68px)}
+#nombre{width:100%;background:var(--panel);border:1px solid var(--line-strong);border-radius:14px;padding:16px 20px;font-family:var(--f-disp);font-weight:700;font-size:clamp(28px,3.6vw,42px);letter-spacing:.02em;color:var(--ink);min-width:0;transition:box-shadow .2s}
+#nombre:focus{outline:none;box-shadow:0 0 22px -4px var(--cyan)}
+#nombre::placeholder{color:var(--muted);font-weight:500}
+.error{color:#FF9DB6;font-weight:500;min-height:1.6em}
+.pie-paso{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pie-paso span{font-size:15px;color:var(--soft);flex:1 1 240px}
+.opciones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opcion{min-height:96px;padding:18px 20px;text-align:left;font-weight:600;font-size:18px;line-height:1.3;transition:transform .25s var(--sale),border-color .2s,box-shadow .2s,opacity .2s}
+.opcion:hover,.opcion:focus-visible{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 0 22px -6px var(--cyan)}
+
+/* Preguntas */
+.top{display:flex;align-items:center;gap:18px}
+.progreso{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;flex:1}
+.progreso i{height:5px;border-radius:3px;background:var(--panel-solid);transition:background-color .2s,box-shadow .2s}
+.progreso i.ok{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.atras{font-family:var(--f-disp);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);min-height:44px}
+.q{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(22px,4vh,40px);padding-block:32px}
+.frase{font-family:var(--f-disp);font-weight:700;text-transform:uppercase;letter-spacing:.3px;line-height:1.02;font-size:clamp(34px,4.9vw,62px);min-height:2.04em;text-wrap:balance;outline:0;max-width:20em}
+.frase.entra{animation:emerge .36s var(--sale) both}
+.escala{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(6px,1vw,12px)}
+.nota{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;min-height:112px;padding:14px 6px 10px;font-size:14px;line-height:1.15;text-align:center;font-weight:500;color:var(--soft);min-width:0;transition:transform .22s var(--sale),border-color .15s,box-shadow .2s,background-color .15s}
+.nota span:first-child{font-family:var(--f-disp);font-weight:700;font-size:38px;line-height:1;color:var(--ink)}
+.escala.pop .nota{animation:emerge .3s var(--sale) both;animation-delay:calc(var(--n)*26ms)}
+.nota:hover,.nota:focus-visible{transform:translateY(-5px);border-color:var(--cyan);box-shadow:0 0 22px -6px var(--cyan)}
+.nota:active{transform:scale(.96)}
+.nota.elegida{background:linear-gradient(90deg,#19E3F8,#4F8BFF);border-color:transparent;color:var(--night);box-shadow:0 0 24px -4px var(--cyan)}
+.nota.elegida span:first-child{color:var(--night)}
+.senales{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding-bottom:22px}
+.senal{display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px;align-items:center;min-width:0}
+.senal svg{width:36px;height:36px;display:block;filter:drop-shadow(0 0 4px var(--c));transition:transform .3s var(--sale)}
+.senal.brinca svg{transform:scale(1.28)}
+.senal b{display:block;font-family:var(--f-disp);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);line-height:1.2}
+.senal i{display:block;height:4px;border-radius:2px;background:var(--panel-solid);overflow:hidden;margin-top:4px}
+.senal i::after{content:"";display:block;height:100%;width:100%;background:var(--c);box-shadow:0 0 8px var(--c);transform-origin:left;transform:scaleX(var(--s,0));transition:transform .4s var(--sale)}
+
+/* Pausa */
+#leyendo{align-items:center;justify-content:center;text-align:center;gap:22px;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+#leyendo p{font-family:var(--f-disp);font-weight:700;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.05;text-wrap:balance}
+.saltarines{display:flex;gap:14px}
+.saltarines svg{width:76px;height:76px;filter:drop-shadow(0 0 6px var(--c));animation:latido 1.1s ease-in-out infinite both;animation-delay:calc(var(--i)*160ms)}
+@keyframes latido{0%,100%{opacity:.25}50%{opacity:1}}
+
+/* Resultado */
+#resultado.abre{animation:abre .6s cubic-bezier(.7,0,.2,1) both}
+@keyframes abre{from{clip-path:circle(0 at var(--ox,50%) var(--oy,50%))}to{clip-path:circle(150% at var(--ox,50%) var(--oy,50%))}}
+.r-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center;padding-block:44px}
+.r-texto{display:flex;flex-direction:column;gap:14px;min-width:0}
+.r-texto h1{font-size:clamp(48px,6.4vw,84px)}
+.r-texto h1 span{display:block}
+.toque{font-family:var(--f-disp);font-weight:700;font-size:clamp(23px,2.5vw,32px);text-transform:uppercase;letter-spacing:.3px;line-height:1.1}
+.r-texto p:not(.toque):not(.tech){font-size:clamp(17px,1.4vw,20px);color:var(--soft);max-width:30em}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.pegar{animation:revela .5s ease 1.05s both}
+.pegar.b{animation-delay:1.2s}.pegar.c{animation-delay:1.35s}
+.acciones .btn{animation:emerge .45s var(--sale) both;animation-delay:calc(1.5s + var(--i)*100ms)}
+@keyframes revela{from{opacity:0;transform:translateY(14px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.escena{position:relative;overflow:hidden;min-width:0;padding:12px;display:flex;flex-direction:column;box-shadow:0 0 34px -14px var(--c);border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.esc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;position:relative;z-index:2}
+.esc-top .tech{color:var(--c);font-size:13px}
+.repetir-a{font-family:var(--f-disp);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:4px 14px;min-height:32px;transition:border-color .2s,box-shadow .2s}
+.repetir-a:hover{border-color:var(--c);box-shadow:0 0 12px -2px var(--c)}
+.lienzo{position:relative;flex:1}
+.lienzo svg{display:block;width:100%;max-width:440px;height:auto;margin:0 auto;overflow:visible;position:relative;z-index:1;filter:drop-shadow(0 0 7px var(--c))}
+.rejilla{position:absolute;left:-40%;right:-40%;bottom:-16px;height:44%;background-image:linear-gradient(var(--line-strong) 1px,transparent 1px),linear-gradient(90deg,var(--line-strong) 1px,transparent 1px);background-size:44px 44px;transform:perspective(320px) rotateX(62deg);transform-origin:bottom;-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%)}
+
+/* Trazo de constelación: sin .play se ve el dibujo terminado */
+.play .t{stroke-dasharray:1;animation:traza .8s ease-out both;animation-delay:calc(var(--d,0)*1s)}
+@keyframes traza{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.n{transform-box:fill-box;transform-origin:center}
+.play .n{animation:estrella .4s var(--sale) both;animation-delay:calc(var(--d,0)*1s)}
+@keyframes estrella{from{opacity:0;transform:scale(0)}to{opacity:1;transform:none}}
+.play .g-salto{animation:salto 1.3s cubic-bezier(.2,.8,.2,1) .5s both}
+@keyframes salto{0%{transform:translate(-80px,300px) rotate(16deg)}64%{transform:translate(10px,-26px) rotate(-5deg)}100%{transform:none}}
+.flota{animation:flota 4s ease-in-out infinite alternate}
+@keyframes flota{to{transform:translateY(-9px)}}
+.mandibula{transform-box:view-box;transform-origin:226px 124px}
+.play .mandibula{animation:muerde .3s ease-in-out 1.9s 3 both}
+@keyframes muerde{50%{transform:rotate(-17deg)}}
+.campo-m{animation:pulso 2s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.campo-m.b{animation-delay:.7s}
+@keyframes pulso{0%{opacity:.9;transform:scale(.7)}100%{opacity:0;transform:scale(1.2)}}
+.play .jala{animation:jala .7s cubic-bezier(.5,0,.3,1) both;animation-delay:calc(.9s + var(--i)*90ms)}
+@keyframes jala{from{opacity:0;transform:translate(var(--x),var(--y))}to{opacity:1;transform:none}}
+.aguja{transform-box:view-box;transform-origin:200px 200px;transform:rotate(38deg)}
+.play .aguja{animation:busca 2.2s cubic-bezier(.3,.1,.2,1) .5s both}
+@keyframes busca{0%{transform:rotate(0)}45%{transform:rotate(1120deg)}68%{transform:rotate(1072deg)}84%{transform:rotate(1106deg)}100%{transform:rotate(1118deg)}}
+.marcas-b{transform-box:view-box;transform-origin:200px 200px;animation:lento 50s linear infinite}
+@keyframes lento{to{transform:rotate(360deg)}}
+
+.seccion{padding-block:44px 0}
+.seccion>h2{font-size:clamp(34px,4.2vw,56px);margin-bottom:22px}
+.mezcla{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.medida{padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0;transition:transform .25s var(--sale),border-color .2s}
+.medida:hover{transform:translateY(-3px);border-color:var(--c)}
+.medida svg{width:56px;height:56px;filter:drop-shadow(0 0 5px var(--c))}
+.medida b{font-family:var(--f-disp);font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:var(--c);line-height:1.1}
+.medida span{font-family:var(--f-disp);font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.riel{height:5px;border-radius:3px;background:var(--panel-solid);overflow:hidden}
+.riel i{display:block;height:100%;width:var(--p);background:var(--c);box-shadow:0 0 8px var(--c);transform-origin:left;animation:llena .9s ease 1.2s both}
+@keyframes llena{from{transform:scaleX(0)}}
+.tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dato{padding:20px;display:flex;flex-direction:column;gap:6px;min-width:0;transition:transform .25s var(--sale),border-color .2s}
+.dato:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+.dato h3{font-size:25px;line-height:1.05}
+.dato p{color:var(--soft)}
+.dato .tech{font-size:13px}
+.cierre{margin-top:48px;border-top:1px solid var(--line-strong);background:rgba(6,20,64,.7)}
+.cierre-in{padding-block:44px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.cierre h2{font-size:clamp(36px,5vw,64px)}
+.cierre p{color:var(--soft)}
+.cierre .acciones .btn{animation:none}
+.legal{font-size:15px;max-width:48em}
+.repetir{font-weight:600;text-decoration:underline;min-height:44px;color:var(--soft)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--panel-solid);border:1px solid var(--line-strong);color:var(--ink);font-weight:600;padding:12px 18px;border-radius:14px;z-index:30;max-width:calc(100vw - 32px);box-shadow:0 0 24px -6px var(--cyan)}
+
+@media (max-width:860px){
+  #inicio .ini{grid-template-columns:minmax(0,1fr);gap:24px;padding-block:24px}
+  .ini-t h1{font-size:clamp(40px,12vw,64px)}
+  .ini-t .btn{align-self:stretch}
+  .tira{min-height:176px;padding:12px}
+  .tira .bicho{width:118px;height:118px;right:-8px;bottom:-10px}
+  .opciones,.tres,.dos{grid-template-columns:minmax(0,1fr)}
+  .opcion{min-height:72px}
+  .mezcla{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r-grid{grid-template-columns:minmax(0,1fr);padding-block:20px}
+  .escena{order:-1}
+  .lienzo svg{max-width:270px}
+  .acciones .btn{flex:1 1 100%}
+  .nota{min-height:102px;font-size:12.5px;padding-inline:3px}
+  .nota span:first-child{font-size:32px}
+  .frase{font-size:clamp(32px,9.6vw,54px)}
+  .senal{grid-template-columns:minmax(0,1fr)}
+  .senal svg{width:30px;height:30px}
+  .senal b{font-size:12.5px;letter-spacing:.04em}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+
+<canvas id="cielo" aria-hidden="true"></canvas>
+<div id="app">
+  <section class="vista" id="inicio" aria-labelledby="t-inicio">
+    <div class="bar"><div class="ancho bar-in"><span class="marca" data-logo>Nexxa <b>Expo</b></span><small><a href="./" style="color:var(--cyan)">‹ Volver a Nexxa Expo</a> · Vie 20 nov</small></div></div>
+    <div class="ancho ini">
+      <div class="ini-t">
+        <p class="tech">Test para emprendedores</p>
+        <h1 id="t-inicio">¿Qué tipo de <span class="ac">emprendedor</span> eres?</h1>
+        <p>Responde 12 frases, descubre qué podrías vender y recibe un plan de arranque en PDF a tu nombre.</p>
+        <div class="fila-cta"><button class="btn" id="b-empezar" type="button">Descubrir mi perfil</button><span>Toma cerca de 2 minutos.</span></div>
+      </div>
+      <div class="tiras" id="tiras"></div>
+    </div>
+  </section>
+
+  <section class="vista" id="v-nombre" hidden>
+    <div class="bar"><div class="ancho bar-in"><span class="marca" data-logo>Nexxa <b>Expo</b></span><small>Vie 20 nov · 3:00 p. m.</small></div></div>
+    <form class="ancho paso" id="f-nombre" novalidate>
+      <h1><label for="nombre">¿Cómo te llamas?</label></h1>
+      <input id="nombre" name="nombre" type="text" maxlength="40" autocomplete="given-name" placeholder="Escribe tu nombre">
+      <p class="error" id="e-nombre" role="alert"></p>
+      <div class="pie-paso">
+        <button class="btn" type="submit">Continuar</button>
+        <span>Tu nombre solo aparece en tu resultado y en tu plan. No lo guardamos.</span>
+      </div>
+    </form>
+  </section>
+
+  <section class="vista" id="v-etapa" hidden>
+    <div class="bar"><div class="ancho bar-in"><span class="marca" data-logo>Nexxa <b>Expo</b></span><small>Vie 20 nov · 3:00 p. m.</small></div></div>
+    <div class="ancho paso">
+      <h1 id="t-etapa" tabindex="-1">¿En qué vas?</h1>
+      <div class="opciones" id="opciones"></div>
+    </div>
+  </section>
+
+  <section class="vista" id="preguntas" hidden>
+    <div class="bar"><div class="ancho bar-in top">
+      <button class="atras" id="b-atras" type="button">Atrás</button>
+      <div class="progreso" id="progreso" role="img" aria-label="Progreso del test"></div>
+    </div></div>
+    <div class="ancho q">
+      <p class="frase" id="frase" tabindex="-1" aria-live="polite"></p>
+      <div class="escala" id="escala" role="group" aria-label="¿Qué tanto se parece a ti?"></div>
+    </div>
+    <div class="ancho senales" id="senales" aria-hidden="true"></div>
+  </section>
+
+  <section class="vista" id="leyendo" hidden>
+    <div class="saltarines" id="saltarines" aria-hidden="true"></div>
+    <p id="t-leyendo"></p>
+  </section>
+
+  <main class="vista" id="resultado" hidden></main>
+</div>
+<canvas id="chispas" aria-hidden="true"></canvas>
+<div id="avisos" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+'use strict';
+/* Ajustes para la landing */
+var CONFIG={registro:'https://nexxaexpo2026.online/#registro',sitio:'nexxaexpo2026.online'};
+
+var ORDEN=['tiburon','iman','roble','brujula'];
+var COLOR={tiburon:'#19E3F8',iman:'#FF4D7E',roble:'#35E39B',brujula:'#FFC24B'};
+
+/* Cada perfil es una constelación: líneas y estrellas. El estado sin animar es el dibujo final. */
+function tr(d,c,del,w){return '<path class="t" pathLength="1" d="'+d+'" fill="none" stroke="'+c+'" stroke-width="'+(w||2.2)+'" stroke-linejoin="round" stroke-linecap="round" style="--d:'+del+'"/>'}
+function nodos(a,c,del){return a.map(function(q,i){return '<circle class="n" cx="'+q[0]+'" cy="'+q[1]+'" r="'+(q[2]||4)+'" fill="'+(q[2]?'#fff':c)+'" style="--d:'+(del+i*.04).toFixed(2)+'"/>'}).join('')}
+function dibujo(k){
+  var c=COLOR[k];
+  if(k==='tiburon'){
+    return '<g transform="rotate(-52 200 200) translate(42 84)">'+
+    '<path d="M316 110 262 72 204 62 146 6 150 70 96 92 62 118 8 46 34 120 14 192 70 132 128 156 124 214 196 160 226 124 304 114Z" fill="'+c+'" fill-opacity=".1"/>'+
+    tr('M316 110 262 72 204 62 146 6 150 70 96 92 62 118 8 46 34 120 14 192 70 132 128 156 124 214 196 160 226 124 304 114Z',c,.15,2.6)+
+    tr('M226 124 262 72M226 124 204 62M226 124 150 70M150 70 196 160M150 70 128 156M96 92 128 156M96 92 70 132M62 118 70 132M34 120 62 118',c,.75,1.3)+
+    '<g class="mandibula"><path d="M226 124 292 158 232 148 196 160Z" fill="'+c+'" fill-opacity=".1"/>'+tr('M226 124 292 158 232 148 196 160',c,.6,2.6)+tr('M244 133 250 146 256 139 263 152 269 145 278 154',c,.95,1.5)+'</g>'+
+    tr('M238 122 244 136 250 120 256 135 262 118 268 133 274 116 280 131 286 115',c,.95,1.5)+
+    nodos([[316,110],[262,72],[204,62],[146,6],[150,70],[96,92],[62,118],[8,46],[34,120],[14,192],[70,132],[128,156],[124,214],[196,160],[226,124],[292,158]],c,.1)+
+    nodos([[258,92,5.5]],c,.9)+'</g>';
+  }
+  if(k==='iman'){
+    return '<path d="M90 110H170V235L188 262H212L230 235V110H310V245L265 320H135L90 245Z" fill="'+c+'" fill-opacity=".1"/>'+
+    tr('M90 110H170V235L188 262H212L230 235V110H310V245L265 320H135L90 245Z',c,.1,2.6)+
+    tr('M90 160H170M230 160H310M170 235 135 320M230 235 265 320M188 262 180 320M212 262 220 320M90 245H170M230 245H310',c,.7,1.3)+
+    '<g fill="none" stroke="'+c+'" stroke-width="1.6"><path class="campo-m" d="M130 96C130 22 270 22 270 96"/><path class="campo-m b" d="M130 96C130 22 270 22 270 96"/></g>'+
+    nodos([[90,110],[170,110],[170,235],[188,262],[212,262],[230,235],[230,110],[310,110],[310,245],[265,320],[135,320],[90,245],[90,160],[170,160],[230,160],[310,160]],c,.1)+
+    [[130,96,-120,-90],[166,44,-60,-170],[234,44,60,-170],[270,96,120,-90],[200,30,0,-150]].map(function(q,i){return '<circle class="jala" cx="'+q[0]+'" cy="'+q[1]+'" r="4.5" fill="#fff" style="--i:'+i+';--x:'+q[2]+'px;--y:'+q[3]+'px"/>'}).join('');
+  }
+  if(k==='roble'){
+    return '<path d="M58 190 68 130 115 75 170 40 235 40 290 80 335 135 345 190 300 236 100 236Z" fill="'+c+'" fill-opacity=".08"/>'+
+    tr('M200 388V270',c,.1,3.2)+tr('M200 270 200 170 170 100M200 170 235 105M200 270 140 210 90 200M140 210 130 140M200 270 265 205 315 195M265 205 275 135',c,.55,2.4)+
+    tr('M200 388 150 398M200 388 250 398M200 388 176 398M200 388 224 398',c,.3,1.6)+
+    tr('M58 190 68 130 115 75 170 40 235 40 290 80 335 135 345 190 300 236 100 236Z',c,1.1,1.3)+
+    tr('M170 100 170 40M170 100 115 75M235 105 235 40M235 105 290 80M130 140 68 130M130 140 115 75M90 200 58 190M90 200 100 236M275 135 335 135M275 135 290 80M315 195 345 190M315 195 300 236',c,1.35,1)+
+    nodos([[200,388],[200,270],[200,170],[170,100],[235,105],[140,210],[90,200],[130,140],[265,205],[315,195],[275,135]],c,.5)+
+    nodos([[58,190],[68,130],[115,75],[170,40],[235,40],[290,80],[335,135],[345,190],[300,236],[100,236],[150,398],[250,398]],c,1.2);
+  }
+  var m='';for(var i=0;i<36;i++){m+='<rect x="199" y="44" width="2" height="'+(i%9===0?20:i%3===0?13:7)+'" fill="'+c+'" transform="rotate('+(i*10)+' 200 200)"/>'}
+  return tr('M200 16a184 184 0 1 1-.01 0',c,.1,2.4)+tr('M200 36a164 164 0 1 1-.01 0',c,.25,1)+
+    '<circle cx="200" cy="200" r="164" fill="'+c+'" fill-opacity=".06"/>'+
+    '<g class="marcas-b">'+m+'</g>'+
+    '<g font-family="Barlow Condensed,Arial Narrow,Arial,sans-serif" font-weight="700" font-size="32" fill="'+c+'" text-anchor="middle"><text x="200" y="110">N</text><text x="306" y="211">E</text><text x="200" y="314">S</text><text x="94" y="211">O</text></g>'+
+    tr('M200 90 340 200 200 310 60 200Z',c,.9,1)+
+    '<g class="aguja"><path d="M200 74l26 126h-52z" fill="'+c+'" fill-opacity=".85"/><path d="M200 326l-26-126h52z" fill="'+c+'" fill-opacity=".14" stroke="'+c+'" stroke-width="2"/><circle cx="200" cy="200" r="9" fill="#fff"/></g>'+
+    nodos([[200,16],[384,200],[200,384],[16,200]],c,.6);
+}
+function arte(k,escena){
+  var cuerpo=dibujo(k);
+  if(escena&&k==='tiburon')cuerpo='<g class="flota"><g class="g-salto">'+cuerpo+'</g></g>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" aria-hidden="true">'+cuerpo+'</svg>';
+}
+
+var P={
+tiburon:{n:'Tiburón',c:COLOR.tiburon,corto:'Decide rápido y prueba.',eres:'Te mueves rápido y no le temes a probar.',
+ sup:'Empiezas cuando otros siguen pensando.',ciego:'Puedes gastar antes de saber si algo funciona.',cuida:'Ponle un tope de dinero a cada prueba y decide con números a los 7 días.',
+ fuerzas:['Decides rápido','Aprendes probando','Te recuperas pronto cuando algo falla'],regla:'Prueba pequeño, mide rápido y sigue solo con lo que funcione.',
+ vende:[['Productos llamativos por internet','Cosas que se entienden en un video corto y se pueden vender sin tener inventario.'],['Soluciones para la casa o el carro','Organizadores, limpieza y accesorios que resuelven algo que la gente ve todos los días.'],['Promociones de temporada','Regalos y fechas especiales, cuando hay una razón clara para comprar ya.']],
+ charla:'Qué vender',charlaD:'la ponencia de dropshipping',socio:'roble',socioD:'te ayuda a sostener lo que arrancas y a cuidar a tus clientes.',
+ tareas:['Date 48 horas para elegir tu primera opción y deja de investigar.','Prueba dos ofertas con un tope de dinero escrito antes de empezar.','Detén lo que no dio señales y refuerza solo lo que funcionó.','Busca a alguien constante que te ayude con pedidos y clientes.'],
+ toque:'te da velocidad para pasar de la idea a la acción.',refuerzo:'Te cuesta lanzarte. Esta semana haz una prueba pequeña aunque no esté perfecta.'},
+iman:{n:'Imán',c:COLOR.iman,corto:'Conecta y convence.',eres:'La gente te escucha y confía en lo que recomiendas.',
+ sup:'Haces que la gente quiera escucharte y comprarte.',ciego:'Puedes conseguir mucha atención y descuidar las ganancias.',cuida:'Antes de publicar una oferta, calcula cuánto te queda por cada venta.',
+ fuerzas:['Conectas con facilidad','Explicas con confianza','Creas comunidad a tu alrededor'],regla:'Primero muestra, luego vende y siempre responde.',
+ vende:[['Ropa, belleza y accesorios','Productos que se lucen en cámara y que la gente compra por recomendación.'],['Tu propia marca','Un nombre, un estilo y una historia que la gente quiera seguir.'],['Productos que tú recomiendas','Cosas que usas de verdad y puedes mostrar en redes sociales.']],
+ charla:'Cómo atraer clientes',charlaD:'la ponencia de anuncios en Facebook e Instagram con TAG Digital',socio:'brujula',socioD:'te ordena las cuentas y te ayuda a tomar decisiones con números.',
+ tareas:['Elige a quién le hablas y escribe cómo lo ayudas en una frase.','Publica un video corto en el que muestres el producto en uso.','Pide a tus primeros clientes que cuenten su experiencia.','Busca a alguien organizado que revise tus cuentas contigo.'],
+ toque:'te ayuda a mostrar lo que haces y a ganar confianza.',refuerzo:'Mostrarte puede darte pena. Empieza con videos de tus manos y del producto.'},
+roble:{n:'Roble',c:COLOR.roble,corto:'Es constante y cuida.',eres:'Eres constante y cuidas a tus clientes.',
+ sup:'Haces que los clientes vuelvan.',ciego:'Puedes tardar demasiado en lanzar porque quieres tener todo listo.',cuida:'Fija una fecha de lanzamiento y sal con una versión sencilla.',
+ fuerzas:['Cumples lo que prometes','Tienes paciencia','Atiendes bien a las personas'],regla:'Cumple lo que prometes y pregunta siempre cómo le fue al cliente.',
+ vende:[['Productos que se compran seguido','Café, aseo, cuidado personal o mascotas: cosas que se acaban y se vuelven a comprar.'],['Un servicio con cita o mensualidad','Algo que puedas prestar bien y repetir con los mismos clientes.'],['Paquetes mensuales','Una caja o un combo que llegue cada mes con lo que tu cliente necesita.']],
+ charla:'Dónde operar',charlaD:'la ponencia de Master Shop',socio:'tiburon',socioD:'te empuja a lanzar antes y a probar cosas nuevas.',
+ tareas:['Escribe una fecha de lanzamiento y compártela con alguien.','Crea una lista de clientes para escribirles después de cada compra.','Pide a tres clientes su opinión y mejora una sola cosa.','Busca a alguien decidido que te ayude a vender y a probar más.'],
+ toque:'te ayuda a cuidar a cada cliente para que vuelva.',refuerzo:'Hacer seguimiento puede quedar de último. Escribe a cada comprador después de la entrega.'},
+brujula:{n:'Brújula',c:COLOR.brujula,corto:'Piensa y organiza.',eres:'Piensas, organizas y cuidas cada peso.',
+ sup:'Ves los números que otros ignoran.',ciego:'Puedes analizar de más y demorar tu primera venta.',cuida:'Date tres días para decidir con la información que tengas.',
+ fuerzas:['Haces bien las cuentas','Organizas el trabajo','Encuentras formas más simples de hacer las cosas'],regla:'Mide lo importante, simplifica y automatiza lo que se repite.',
+ vende:[['Cursos, guías y plantillas','Lo que sabes hacer, explicado paso a paso para que otros lo apliquen.'],['Soluciones para un grupo específico','Un producto o servicio pensado para un tipo de cliente muy concreto.'],['Orden y automatización para negocios','Ayuda a pequeños negocios a organizar pedidos, cuentas y mensajes.']],
+ charla:'Cómo potenciarlo',charlaD:'la ponencia de inteligencia artificial con JadeMind',socio:'iman',socioD:'te ayuda a mostrar tu trabajo y a conseguir clientes.',
+ tareas:['Limita tu investigación a tres días y elige.','Crea una hoja sencilla con ingresos, gastos y ventas.','Mira tus números y haz un solo cambio por semana.','Busca a alguien que disfrute vender y mostrar lo que haces.'],
+ toque:'te ayuda a revisar tus números antes de invertir.',refuerzo:'Las cuentas pueden quedar para después. Anota cada ingreso y gasto el mismo día.'}
+};
+
+var FRASES=[
+['tiburon','Cuando tengo una idea, quiero empezar ya.'],['iman','Me gusta hablar con gente nueva.'],['roble','Me gusta atender bien a las personas.'],['brujula','Antes de gastar dinero, hago cuentas.'],
+['iman','Disfruto mostrarme en redes sociales.'],['brujula','Me gusta tener todo organizado.'],['tiburon','Prefiero intentar y equivocarme que quedarme con la duda.'],['roble','Termino lo que empiezo, aunque tome tiempo.'],
+['roble','Prefiero clientes que vuelvan a muchos clientes de una sola compra.'],['tiburon','Si algo no funciona, cambio rápido y sigo.'],['brujula','Busco la forma de hacer las cosas más fácil y en menos pasos.'],['iman','Se me facilita convencer a otros de una idea.']
+];
+var NOTAS=['Nada que ver conmigo','Poco','A veces','Bastante','Soy yo'];
+
+var ETAPAS={
+nada:{t:'Quiero emprender, pero no sé en qué.',foco:'elegir una opción y hacer tu primera prueba',
+ sem:[['Elige qué probar','Terminar con una sola opción.',['Escribe 10 problemas que ves en tu casa, tu barrio o tu trabajo.','Marca los que la gente ya paga por resolver.','Elige una de las opciones de tu perfil y deja las demás para después.']],
+ ['Habla con posibles clientes','Conversar con 10 personas.',['Pregunta cómo resuelven hoy ese problema y cuánto pagan.','Anota las palabras exactas que usan.','Resume tu oferta en una frase: ayudo a [quién] con [qué].']],
+ ['Haz tu primera oferta','Publicar una oferta con precio.',['Calcula tu precio con la hoja de cuentas de este plan.','Crea tu perfil de WhatsApp Business e Instagram.','Ofrécela a las 10 personas con las que hablaste.']],
+ ['Busca tu primera venta','Lograr tu primer pedido o pago.',['Publica al menos tres veces esta semana.','Responde cada mensaje el mismo día.','Escribe qué funcionó y qué cambiarías.']]],
+ m2:['Repite la oferta que mejor respondió.','Consigue tus primeros 10 clientes.','Pide opiniones reales y mejora tu oferta.'],m3:['Define una rutina semanal de ventas.','Mide cuánto te queda por venta.','Decide si sigues, ajustas o pruebas otra opción.']},
+idea:{t:'Tengo una idea, pero no he empezado.',foco:'comprobar que alguien pagaría por tu idea',
+ sem:[['Aterriza tu idea','Resumir tu idea en una frase.',['Escribe quién la compraría y qué problema le resuelve.','Busca tres negocios parecidos y anota sus precios.','Define qué harías distinto.']],
+ ['Comprueba que te comprarían','Conversar con 10 posibles clientes.',['Muestra una foto, un dibujo o una muestra.','Pregunta cuánto pagarían y qué les preocupa.','Guarda el contacto de quienes de verdad la quieren, con su permiso.']],
+ ['Prepara una versión sencilla','Tener algo listo para vender.',['Quita todo lo que no sea indispensable.','Calcula tus costos y tu precio.','Define cómo cobrarás y cómo entregarás.']],
+ ['Lanza','Conseguir tus primeras tres ventas.',['Ofrece tu versión sencilla a quienes mostraron interés.','Publica tu oferta con precio y forma de compra.','Pide una opinión a cada cliente.']]],
+ m2:['Mejora la oferta con lo que dijeron tus clientes.','Prueba un canal para llegar a gente nueva.','Crea una forma simple de registrar pedidos y cuentas.'],m3:['Repite lo que te trajo ventas.','Ajusta tu precio según tus números.','Infórmate en la Cámara de Comercio sobre cómo formalizarte.']},
+revende:{t:'Vendo productos de otros, sin tener inventario.',foco:'vender con ganancia real y menos devoluciones',
+ sem:[['Revisa tus números','Saber cuánto te queda por venta.',['Calcula la ganancia de cada producto con la hoja de cuentas.','Incluye devoluciones y pedidos que no se entregan.','Deja de anunciar los productos que te dejan pérdida.']],
+ ['Mejora tu oferta','Reforzar el producto que más te deja.',['Graba tres videos con mensajes distintos.','Mejora fotos, beneficios y respuestas a dudas.','Prueba un combo o una oferta por dos unidades.']],
+ ['Reduce los pedidos perdidos','Confirmar todos tus pedidos.',['Confirma por WhatsApp antes de despachar.','Revisa qué ciudades y transportadoras tienen más devoluciones.','Avisa al cliente cuando el pedido salga.']],
+ ['Construye algo tuyo','Tener una lista de clientes.',['Guarda los datos de quienes aceptaron que los contactes.','Ofrece un segundo producto relacionado.','Decide con tus números si sigues o cambias de producto.']]],
+ m2:['Prueba dos productos nuevos con un tope de dinero.','Reduce tus devoluciones semana a semana.','Empieza a usar un nombre de tienda propio.'],m3:['Concentra tu presupuesto en lo que deja ganancia.','Escribe a clientes anteriores con nuevas ofertas.','Automatiza la confirmación y el seguimiento.']},
+tienda:{t:'Ya tengo mi tienda en internet.',foco:'conseguir más clientes y lograr que vuelvan',
+ sem:[['Encuentra dónde se van las ventas','Conocer tus tres números clave.',['Mide visitas, ventas y valor promedio de compra.','Revisa la tienda desde el celular, como un cliente.','Identifica el producto que más ganancia te deja.']],
+ ['Mejora tu tienda','Corregir tres puntos de la compra.',['Mejora fotos y descripción de tus tres mejores productos.','Simplifica el pago y el envío.','Agrega respuestas a dudas comunes y opiniones reales.']],
+ ['Atrae más clientes','Probar un mensaje nuevo.',['Prueba un anuncio con un presupuesto fijo.','Publica tres contenidos con el producto en uso.','Compara resultados por producto y por mensaje.']],
+ ['Haz que vuelvan','Lograr segundas compras.',['Escribe a tus clientes después de la entrega.','Crea un combo o una recomendación de compra adicional.','Automatiza un mensaje que repitas mucho.']]],
+ m2:['Refuerza el anuncio y el producto con mejores números.','Crea una lista de clientes para campañas.','Reduce los carritos abandonados con un recordatorio.'],m3:['Lanza una oferta para clientes anteriores.','Documenta tus tareas repetidas.','Delega o automatiza una de ellas.']}
+};
+var PONENCIAS=[['Qué vender','¿Cómo sé si un producto tiene demanda antes de invertir?'],['Cómo atraer clientes','¿Con qué presupuesto empiezo una prueba y qué debo medir?'],['Dónde operar','¿Qué puedo manejar desde una sola herramienta y qué necesito primero?'],['Cómo potenciarlo','¿Qué tarea repetitiva de mi negocio puedo pasar a la inteligencia artificial?']];
+
+var estado={nombre:'',etapa:null,i:0,resp:new Array(FRASES.length).fill(0),r:null};
+var $=function(id){return document.getElementById(id)};
+var VISTAS=['inicio','v-nombre','v-etapa','preguntas','leyendo','resultado'];
+function mostrar(id){VISTAS.forEach(function(v){$(v).hidden=v!==id});window.scrollTo(0,0);document.documentElement.scrollTop=0}
+var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function esperar(ms){return new Promise(function(r){setTimeout(r,quieto?0:ms)})}
+function aviso(t){var d=document.createElement('div');d.className='toast';d.textContent=t;var a=$('avisos');a.innerHTML='';a.appendChild(d);setTimeout(function(){if(d.parentNode)d.remove()},4800)}
+
+/* Cielo de estrellas */
+function pintarCielo(){
+  var c=$('cielo'),d=Math.min(devicePixelRatio||1,2),W=innerWidth,H=innerHeight,x=c.getContext('2d');c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);
+  x.fillStyle='#020A24';x.fillRect(0,0,W,H);
+  var g=x.createRadialGradient(W*.5,-H*.1,0,W*.5,0,H*1.1);g.addColorStop(0,'rgba(11,92,255,.34)');g.addColorStop(1,'rgba(2,10,36,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+  var n=Math.round(W*H/9000),sem=7;function rd(){sem=(sem*16807)%2147483647;return sem/2147483647}
+  for(var i=0;i<n;i++){x.globalAlpha=.25+rd()*.6;x.fillStyle=rd()>.6?'#19E3F8':'#C9D6F2';x.fillRect(rd()*W,rd()*H,1+rd()*1.2,1+rd()*1.2)}
+  x.globalAlpha=.35;x.strokeStyle='#19E3F8';x.lineWidth=1;
+  for(i=0;i<Math.round(W/170);i++){var a=rd()*W,b=rd()*H,l=6+rd()*8;x.beginPath();x.moveTo(a-l,b);x.lineTo(a+l,b);x.moveTo(a,b-l);x.lineTo(a,b+l);x.stroke()}
+  x.globalAlpha=1;
+}
+pintarCielo();addEventListener('resize',pintarCielo);
+
+/* Chispas */
+var cv=$('chispas'),ctx=cv.getContext('2d'),gotas=[],corriendo=false;
+function medir(){var d=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*d;cv.height=innerHeight*d;ctx.setTransform(d,0,0,d,0,0)}
+addEventListener('resize',medir);medir();
+function chispas(x,y,color,n,fuerza){
+  if(quieto)return;
+  for(var i=0;i<n;i++){var a=Math.PI*2*Math.random(),v=(fuerza||6)*(.2+Math.random());gotas.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:.8+Math.random()*1.8,c:color,t:0,m:30+Math.random()*30})}
+  if(!corriendo){corriendo=true;requestAnimationFrame(cuadro)}
+}
+function cuadro(){
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  gotas=gotas.filter(function(g){return g.t<g.m});
+  gotas.forEach(function(g){g.t++;g.vx*=.96;g.vy*=.96;g.x+=g.vx;g.y+=g.vy;ctx.globalAlpha=1-g.t/g.m;ctx.fillStyle=g.c;ctx.shadowColor=g.c;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(g.x,g.y,g.r,0,6.3);ctx.fill()});
+  ctx.globalAlpha=1;ctx.shadowBlur=0;
+  if(gotas.length)requestAnimationFrame(cuadro);else{corriendo=false;ctx.clearRect(0,0,innerWidth,innerHeight)}
+}
+/* El logo real aparece cuando el archivo vive junto a la landing */
+var logoOk=false;
+function ponerLogo(){if(!logoOk)return;Array.prototype.forEach.call(document.querySelectorAll('[data-logo]'),function(m){var i=new Image();i.src='expo-logo.png';i.alt='Nexxa Expo';i.className='logo';m.replaceWith(i)})}
+(function(){var i=new Image();i.onload=function(){logoOk=true;ponerLogo()};i.src='expo-logo.png'})();
+
+/* Inicio */
+$('tiras').innerHTML=ORDEN.map(function(k,i){var p=P[k];return '<button type="button" class="tira panel emerge" data-k="'+k+'" style="--c:'+p.c+';--i:'+i+'" aria-label="'+p.n+': '+p.corto+'"><b>'+p.n+'</b><small>'+p.corto+'</small><span class="bicho">'+arte(k)+'</span></button>'}).join('');
+Array.prototype.forEach.call(document.querySelectorAll('.tira'),function(t){
+  function traza(){var v=t.querySelector('svg');v.classList.remove('play');void v.getBoundingClientRect();v.classList.add('play')}
+  t.addEventListener('mouseenter',traza);
+  t.addEventListener('click',function(){var r=t.getBoundingClientRect();traza();t.classList.add('salta');chispas(r.right-70,r.bottom-70,P[t.dataset.k].c,24,6);setTimeout(function(){t.classList.remove('salta')},1100)});
+});
+$('b-empezar').addEventListener('click',function(){mostrar('v-nombre');$('nombre').focus()});
+
+/* Nombre y etapa */
+$('f-nombre').addEventListener('submit',function(e){
+  e.preventDefault();var v=$('nombre').value.trim().replace(/\s+/g,' ');
+  if(v.length<2){$('e-nombre').textContent='Escribe tu nombre para ponerlo en tu plan.';return}
+  $('e-nombre').textContent='';estado.nombre=v.split(' ').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1)}).join(' ');
+  mostrar('v-etapa');$('t-etapa').textContent=primero()+', ¿en qué vas?';$('t-etapa').focus();
+});
+function primero(){return estado.nombre.split(' ')[0]}
+$('opciones').innerHTML=Object.keys(ETAPAS).map(function(k,i){return '<button type="button" class="opcion panel emerge" data-e="'+k+'" style="--i:'+i+'">'+ETAPAS[k].t+'</button>'}).join('');
+Array.prototype.forEach.call(document.querySelectorAll('.opcion'),function(b){b.addEventListener('click',function(){estado.etapa=b.dataset.e;empezarTest()})});
+
+/* Preguntas */
+$('progreso').innerHTML=FRASES.map(function(){return '<i></i>'}).join('');
+$('escala').innerHTML=NOTAS.map(function(n,i){return '<button type="button" class="nota panel" data-v="'+(i+1)+'" style="--n:'+(i+1)+'" aria-label="'+(i+1)+', '+n+'"><span>'+(i+1)+'</span><span>'+n+'</span></button>'}).join('');
+$('senales').innerHTML=ORDEN.map(function(k){return '<div class="senal" data-k="'+k+'" style="--c:'+P[k].c+'">'+arte(k)+'<div><b>'+P[k].n+'</b><i></i></div></div>'}).join('');
+$('saltarines').innerHTML=ORDEN.map(function(k,i){return arte(k).replace('<svg ','<svg style="--i:'+i+';--c:'+P[k].c+'" ')}).join('');
+function empezarTest(){estado.i=0;estado.resp.fill(0);mostrar('preguntas');pintarPregunta();alturas()}
+function alturas(){ORDEN.forEach(function(k){var s=0;FRASES.forEach(function(f,i){if(f[0]===k)s+=estado.resp[i]});document.querySelector('#senales [data-k='+k+']').style.setProperty('--s',(s/15).toFixed(2))})}
+function pintarPregunta(){
+  var f=FRASES[estado.i],fr=$('frase'),es=$('escala');
+  fr.textContent=f[1];fr.classList.remove('entra');es.classList.remove('pop');void fr.offsetWidth;fr.classList.add('entra');es.classList.add('pop');
+  Array.prototype.forEach.call(document.querySelectorAll('#progreso i'),function(n,i){n.classList.toggle('ok',i<estado.i)});
+  Array.prototype.forEach.call(es.children,function(b){b.classList.toggle('elegida',+b.dataset.v===estado.resp[estado.i]);b.disabled=false;b.setAttribute('aria-pressed',+b.dataset.v===estado.resp[estado.i])});
+}
+$('b-atras').addEventListener('click',function(){if(estado.i>0){estado.i--;pintarPregunta()}else{mostrar('v-etapa')}});
+var bloqueo=false;
+function responder(v,boton){
+  if(bloqueo)return;bloqueo=true;
+  var f=FRASES[estado.i];estado.resp[estado.i]=v;
+  Array.prototype.forEach.call($('escala').children,function(b){b.classList.toggle('elegida',b===boton)});
+  var r=boton.getBoundingClientRect();chispas(r.left+r.width/2,r.top+r.height/2,P[f[0]].c,8+v*5,5+v*.6);
+  var cr=document.querySelector('#senales [data-k='+f[0]+']');alturas();cr.classList.add('brinca');setTimeout(function(){cr.classList.remove('brinca')},320);
+  setTimeout(function(){
+    bloqueo=false;
+    if(estado.i<FRASES.length-1){estado.i++;pintarPregunta()}else{terminar(r)}
+  },quieto?60:400);
+}
+$('escala').addEventListener('click',function(e){var b=e.target.closest('.nota');if(b)responder(+b.dataset.v,b)});
+addEventListener('keydown',function(e){if(!$('preguntas').hidden&&/^[1-5]$/.test(e.key)){var b=$('escala').children[+e.key-1];if(b)responder(+e.key,b)}});
+
+/* Cálculo del perfil */
+function calcular(){
+  var pts={},cincos={};ORDEN.forEach(function(k){pts[k]=0;cincos[k]=0});
+  FRASES.forEach(function(f,i){pts[f[0]]+=estado.resp[i];if(estado.resp[i]===5)cincos[f[0]]++});
+  var rank=ORDEN.slice().sort(function(a,b){return pts[b]-pts[a]||cincos[b]-cincos[a]||ORDEN.indexOf(a)-ORDEN.indexOf(b)});
+  var total=ORDEN.reduce(function(s,k){return s+pts[k]},0),pct={},resto=[],suma=0;
+  ORDEN.forEach(function(k){var x=pts[k]*100/total;pct[k]=Math.floor(x);suma+=pct[k];resto.push([k,x-pct[k]])});
+  resto.sort(function(a,b){return b[1]-a[1]}).slice(0,100-suma).forEach(function(r){pct[r[0]]++});
+  var altas=[],bajas=[];
+  FRASES.forEach(function(f,i){if(estado.resp[i]>=4)altas.push([estado.resp[i],f[1]]);if(estado.resp[i]<=2)bajas.push([estado.resp[i],f[1]])});
+  altas.sort(function(a,b){return b[0]-a[0]});bajas.sort(function(a,b){return a[0]-b[0]});
+  return {pts:pts,pct:pct,a:rank[0],b:rank[1],baja:rank[3],altas:altas.slice(0,3).map(function(x){return x[1]}),bajas:bajas.slice(0,2).map(function(x){return x[1]})};
+}
+async function terminar(r){
+  estado.r=calcular();
+  $('t-leyendo').textContent='Analizando tus respuestas, '+primero();
+  mostrar('leyendo');await esperar(1300);
+  pintarResultado(r);
+}
+
+function fechas(){
+  var hoy=new Date(),m=new Intl.DateTimeFormat('es-CO',{day:'numeric',month:'short'});
+  return [0,1,2,3].map(function(i){var a=new Date(hoy);a.setDate(hoy.getDate()+i*7);var b=new Date(a);b.setDate(a.getDate()+6);return (m.format(a)+' a '+m.format(b)).replace(/\./g,'')});
+}
+function pintarResultado(o){
+  var r=estado.r,p=P[r.a],q=P[r.b],e=ETAPAS[estado.etapa],s=P[p.socio],m=$('resultado');
+  m.style.setProperty('--c',p.c);
+  m.style.setProperty('--ox',o.left+'px');m.style.setProperty('--oy',o.top+'px');
+  var fs=fechas();
+  m.innerHTML=
+  document.querySelector('#v-nombre .bar').outerHTML+
+  '<div class="ancho r-grid">'+
+    '<div class="r-texto">'+
+     '<p class="tech pegar">Perfil detectado</p>'+
+     '<h1 id="t-res" tabindex="-1"><span class="pegar" id="r-saludo"></span><span class="pegar b">eres <span class="perfil-acento" style="display:inline">'+p.n+'</span></span></h1>'+
+     '<p class="toque pegar c">con un toque de '+q.n+'</p>'+
+     '<p class="pegar c">'+p.eres+' Tu toque de '+q.n+' '+q.toque+'</p>'+
+     '<div class="acciones">'+
+      '<button class="btn" id="b-plan" type="button" style="--i:0">Descargar mi plan en PDF</button>'+
+      '<a class="btn sec" style="--i:1" href="'+CONFIG.registro+'" target="_blank" rel="noopener">Quiero ir a Nexxa Expo</a>'+
+     '</div>'+
+    '</div>'+
+    '<div class="escena panel"><div class="esc-top"><span class="tech">Constelación '+p.n+'</span><button class="repetir-a" id="escena" type="button">Repetir</button></div><div class="lienzo"><div class="rejilla" aria-hidden="true"></div>'+arte(r.a,true)+'</div></div>'+
+  '</div>'+
+  '<section class="ancho seccion" style="padding-top:8px"><h2>Tu mezcla</h2><div class="mezcla">'+
+   ORDEN.slice().sort(function(a,b){return r.pct[b]-r.pct[a]}).map(function(k){return '<div class="medida panel" style="--c:'+P[k].c+'">'+arte(k)+'<b>'+P[k].n+'</b><span>'+r.pct[k]+'%</span><div class="riel" style="--p:'+r.pct[k]+'%"><i></i></div></div>'}).join('')+
+  '</div></section>'+
+  '<section class="ancho seccion"><h2>Qué podrías <span class="ac">vender</span></h2><div class="tres">'+
+   p.vende.map(function(v){return '<div class="dato panel"><h3>'+v[0]+'</h3><p>'+v[1]+'</p></div>'}).join('')+
+  '</div></section>'+
+  '<section class="ancho seccion"><h2>Lo que debes saber</h2><div class="dos">'+
+   '<div class="dato panel"><p class="tech">Tu superpoder</p><h3>'+p.sup+'</h3></div>'+
+   '<div class="dato panel"><p class="tech">Tu punto ciego</p><h3>'+p.ciego+'</h3><p>'+p.cuida+'</p></div>'+
+   '<div class="dato panel"><p class="tech">Tu socio ideal</p><h3>'+s.n+'</h3><p>Alguien con este perfil '+p.socioD+' Búscalo en Nexxa Expo.</p></div>'+
+   '<div class="dato panel"><p class="tech">Tu ponencia clave</p><h3>'+p.charla+'</h3><p>No te pierdas '+p.charlaD+'.</p></div>'+
+  '</div></section>'+
+  '<section class="ancho seccion"><h2>Tu primer mes</h2><div class="dos">'+
+   e.sem.map(function(w,i){return '<div class="dato panel"><p class="tech">Semana '+(i+1)+' · '+fs[i]+'</p><h3>'+w[0]+'</h3><p>'+w[1]+'</p></div>'}).join('')+
+  '</div></section>'+
+  '<section class="cierre"><div class="ancho cierre-in"><h2>Lleva tu plan a <span class="ac">Nexxa Expo</span></h2>'+
+   '<p>Viernes 20 de noviembre, 3:00 a 8:00 p. m. Institución Universitaria Salazar y Herrera, Medellín. Requiere registro previo.</p>'+
+   '<div class="acciones"><a class="btn" href="'+CONFIG.registro+'" target="_blank" rel="noopener">Regístrate aquí</a><button class="btn sec" id="b-carta" type="button">Descargar mi carta</button></div>'+
+   '<button class="repetir" id="b-otra" type="button">Hacer el test otra vez</button>'+
+   '<p class="legal">Este test es una orientación. No es una prueba profesional ni garantiza ventas.</p>'+
+  '</div></section>';
+  $('r-saludo').textContent=primero()+',';
+  $('b-plan').addEventListener('click',crearPlan);$('b-carta').addEventListener('click',crearCarta);
+  $('b-otra').addEventListener('click',function(){estado.etapa=null;mostrar('inicio')});
+  $('escena').addEventListener('click',reproducir);
+  m.classList.add('abre');mostrar('resultado');ponerLogo();$('t-res').focus({preventScroll:true});
+  reproducir();
+}
+function reproducir(){
+  var sv=document.querySelector('.lienzo svg'),k=estado.r.a,c=P[k].c;
+  sv.classList.remove('play');void sv.getBoundingClientRect();sv.classList.add('play');
+  setTimeout(function(){var r=sv.getBoundingClientRect();
+    if(k==='tiburon'){chispas(r.left+r.width*.5,r.bottom-r.height*.12,c,70,9);chispas(r.left+r.width*.5,r.bottom-r.height*.12,'#fff',30,7)}
+    else if(k==='iman')chispas(r.left+r.width/2,r.top+r.height*.15,c,40,7);
+    else if(k==='roble')chispas(r.left+r.width/2,r.top+r.height*.35,c,50,8);
+    else chispas(r.left+r.width/2,r.top+r.height/2,c,46,8);
+  },k==='tiburon'?1000:k==='brujula'?2650:1500);
+}
+
+/* Archivos */
+var descargas=window.claude&&window.claude.use?window.claude.use('downloads').catch(function(){return null}):Promise.resolve(null);
+async function guardar(nombre,blob){
+  var d=await descargas;
+  if(d){
+    try{await d.save({filename:nombre,data:blob});aviso('Listo. Revisa tus descargas.')}
+    catch(e){aviso(e&&e.code==='declined'?'Descarga cancelada.':'No pudimos descargar el archivo aquí. Inténtalo de nuevo.')}
+    return;
+  }
+  var a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=nombre;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);aviso('Listo. Revisa tus descargas.');
+}
+function sinTildes(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'')||'emprendedor'}
+function imagen(k,lado){return new Promise(function(ok,mal){var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=c.height=lado;c.getContext('2d').drawImage(im,0,0,lado,lado);ok(c)};im.onerror=mal;im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(arte(k))})}
+
+async function crearCarta(){
+  var b=$('b-carta'),r=estado.r,p=P[r.a],q=P[r.b];b.disabled=true;
+  try{
+    try{await Promise.all([document.fonts.load('700 120px "Barlow Condensed"'),document.fonts.load('500 40px "Barlow"')])}catch(e){}
+    var c=document.createElement('canvas');c.width=1080;c.height=1920;var x=c.getContext('2d'),T='"Barlow Condensed","Arial Narrow",sans-serif',B='"Barlow",Arial,sans-serif';
+    x.fillStyle='#020A24';x.fillRect(0,0,1080,1920);
+    var g=x.createRadialGradient(540,520,40,540,520,760);g.addColorStop(0,'rgba(11,92,255,.42)');g.addColorStop(1,'rgba(2,10,36,0)');x.fillStyle=g;x.fillRect(0,0,1080,1920);
+    for(var i=0;i<170;i++){x.globalAlpha=.25+Math.random()*.6;x.fillStyle=i%3?'#C9D6F2':'#19E3F8';x.fillRect(Math.random()*1080,Math.random()*1920,2+Math.random()*2,2+Math.random()*2)}
+    x.globalAlpha=1;
+    x.strokeStyle='rgba(25,227,248,.42)';x.lineWidth=3;redondo(x,36,36,1008,1848,28);x.stroke();
+    x.fillStyle='#F4F8FF';x.font='700 54px '+T;x.fillText('NEXXA',84,122);var mw=x.measureText('NEXXA ').width;x.fillStyle='#19E3F8';x.fillText('EXPO',84+mw,122);
+    var im=await imagen(r.a,1000);x.save();x.shadowColor=p.c;x.shadowBlur=26;x.drawImage(im,130,160,820,820);x.restore();
+    x.fillStyle='#F4F8FF';x.font='700 '+ajustar(x,estado.nombre.toUpperCase(),912,84,T)+'px '+T;x.fillText(estado.nombre.toUpperCase(),84,1076);
+    x.fillStyle=p.c;x.font='700 150px '+T;x.fillText(p.n.toUpperCase(),84,1214);
+    x.fillStyle='#F4F8FF';x.font='700 54px '+T;x.fillText('CON UN TOQUE DE '+q.n.toUpperCase(),84,1288);
+    var y=1370;
+    ORDEN.slice().sort(function(a,b){return r.pct[b]-r.pct[a]}).forEach(function(k){
+      x.font='700 40px '+T;x.fillStyle=P[k].c;x.textAlign='left';x.fillText(P[k].n.toUpperCase(),84,y+22);
+      x.fillStyle='rgba(159,178,218,.22)';redondo(x,300,y,600,14,7);x.fill();
+      x.fillStyle=P[k].c;redondo(x,300,y,Math.max(14,600*r.pct[k]/100),14,7);x.fill();
+      x.fillStyle='#F4F8FF';x.textAlign='right';x.fillText(r.pct[k]+'%',996,y+22);x.textAlign='left';y+=72;
+    });
+    x.fillStyle='#C9D6F2';x.font='500 36px '+B;x.fillText('¿Qué tipo de emprendedor eres tú?',84,1742);
+    x.fillStyle='#19E3F8';x.font='700 40px '+T;x.fillText('20 NOV · MEDELLÍN · '+CONFIG.sitio.toUpperCase(),84,1806);
+    var blob=await new Promise(function(ok){c.toBlob(ok,'image/png')});
+    await guardar('carta-'+sinTildes(estado.nombre)+'.png',blob);
+  }catch(e){aviso('No pudimos crear tu carta. Inténtalo de nuevo.')}
+  b.disabled=false;
+}
+function ajustar(x,t,w,fs,F){while(fs>36){x.font='800 '+fs+'px '+F;if(x.measureText(t).width<=w)break;fs-=4}return fs}
+function redondo(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+
+function rgb(h){var n=parseInt(h.slice(1),16);return [n>>16,n>>8&255,n&255]}
+async function crearPlan(){
+  var b=$('b-plan');
+  if(!window.jspdf){aviso('No pudimos preparar el PDF. Revisa tu conexión e inténtalo de nuevo.');return}
+  b.disabled=true;
+  try{
+    var blob=await armarPDF();
+    await guardar('Plan-de-arranque-'+sinTildes(estado.nombre)+'.pdf',blob);
+  }catch(e){console.error(e);aviso('No pudimos crear tu plan. Inténtalo de nuevo.')}
+  b.disabled=false;
+}
+async function armarPDF(){
+  var r=estado.r,p=P[r.a],q=P[r.b],soc=P[p.socio],e=ETAPAS[estado.etapa],nom=estado.nombre,fs=fechas();
+  var doc=new window.jspdf.jsPDF({unit:'pt',format:'a4'}),W=595,H=842,M=48,CW=W-M*2,y=0,pag=1;
+  var INK=rgb('#020A24'),GR=rgb('#4A5578'),HI=rgb('#EAF2FF'),CO=rgb(p.c),EL=rgb('#0B5CFF'),BL=[255,255,255];
+  function tinta(c){doc.setTextColor(c[0],c[1],c[2])}
+  function relleno(c){doc.setFillColor(c[0],c[1],c[2])}
+  function pie(){doc.setFont('helvetica','normal');doc.setFontSize(9);tinta(GR);doc.text('Plan de arranque de '+nom,M,H-26);doc.text(String(pag),W-M,H-26,{align:'right'})}
+  function nueva(tit){pie();doc.addPage();pag++;relleno(INK);doc.rect(0,0,W,14,'F');relleno(EL);doc.rect(0,14,W,3,'F');y=62;if(tit)h1(tit)}
+  function cabe(h){if(y+h>H-56)nueva()}
+  function h1(t){doc.setFont('helvetica','bold');doc.setFontSize(27);tinta(INK);doc.splitTextToSize(t,CW).forEach(function(l){doc.text(l,M,y);y+=31});y+=8}
+  function h2(t){cabe(44);doc.setFont('helvetica','bold');doc.setFontSize(15);tinta(INK);doc.text(t,M,y);y+=20}
+  function par(t,o){o=o||{};var x=o.x||M,w=o.w||CW,s=o.s||11.5;doc.setFont('helvetica',o.b?'bold':'normal');doc.setFontSize(s);tinta(o.c||INK);var ls=doc.splitTextToSize(t,w);cabe(ls.length*(s+4)+4);ls.forEach(function(l){doc.text(l,x,y);y+=s+4});y+=o.g===undefined?8:o.g}
+  function lista(a){a.forEach(function(t){var ls;doc.setFont('helvetica','normal');doc.setFontSize(11.5);ls=doc.splitTextToSize(t,CW-18);cabe(ls.length*15.5+6);relleno(EL);doc.circle(M+4,y-4,3,'F');tinta(INK);ls.forEach(function(l){doc.text(l,M+18,y);y+=15.5});y+=5});y+=6}
+  function chequeo(t,marca){doc.setFont('helvetica',marca?'bold':'normal');doc.setFontSize(11);var ls=doc.splitTextToSize(t,CW-24);cabe(ls.length*15+6);doc.setDrawColor(INK[0],INK[1],INK[2]);doc.setLineWidth(1);doc.rect(M,y-10,11,11);tinta(INK);ls.forEach(function(l){doc.text(l,M+22,y);y+=15});y+=5}
+  function caja(tit,txt){doc.setFontSize(11.5);doc.setFont('helvetica','normal');var ls=doc.splitTextToSize(txt,CW-36),h=ls.length*15.5+50;cabe(h+10);relleno(HI);doc.roundedRect(M,y-14,CW,h,10,10,'F');doc.setFont('helvetica','bold');doc.setFontSize(13);tinta(INK);doc.text(tit,M+18,y+10);doc.setFont('helvetica','normal');doc.setFontSize(11.5);var yy=y+30;ls.forEach(function(l){doc.text(l,M+18,yy);yy+=15.5});y+=h+6}
+
+  /* Portada */
+  relleno(INK);doc.rect(0,0,W,H,'F');
+  relleno(rgb('#061440'));doc.rect(0,H-120,W,120,'F');
+  var sem=11;function rd(){sem=(sem*16807)%2147483647;return sem/2147483647}
+  for(var i=0;i<130;i++){relleno(i%3?[201,214,242]:rgb('#19E3F8'));doc.circle(rd()*W,rd()*H,.4+rd()*.8,'F')}
+  var cv=await imagen(r.a,1000);doc.addImage(cv.toDataURL('image/png'),'PNG',W-420,H-480,400,400);
+  tinta(BL);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('NEXXA',M,64);tinta(CO);doc.text('EXPO',M+58,64);
+  tinta(BL);doc.setFontSize(46);var yc=150;doc.text('PLAN DE ARRANQUE',M,yc);yc+=46;
+  tinta(CO);doc.setFontSize(30);doc.splitTextToSize(nom.toUpperCase(),CW).forEach(function(l){doc.text(l,M,yc);yc+=34});
+  yc+=12;tinta(BL);doc.setFontSize(18);doc.text(p.n.toUpperCase()+' CON UN TOQUE DE '+q.n.toUpperCase(),M,yc);yc+=26;
+  doc.setFont('helvetica','normal');doc.setFontSize(12.5);tinta(rgb('#C9D6F2'));doc.splitTextToSize('Tu punto de partida: '+e.t,CW-40).forEach(function(l){doc.text(l,M,yc);yc+=17});
+  doc.splitTextToSize('Tu meta para estos 90 días: '+e.foco+'.',CW-40).forEach(function(l){doc.text(l,M,yc);yc+=17});
+  doc.setFontSize(10);doc.text('Creado el '+new Intl.DateTimeFormat('es-CO',{day:'numeric',month:'long',year:'numeric'}).format(new Date()),M,H-40);
+
+  /* Perfil */
+  doc.addPage();pag++;relleno(INK);doc.rect(0,0,W,14,'F');relleno(EL);doc.rect(0,14,W,3,'F');y=62;
+  h1(nom.split(' ')[0]+', esto es lo que vimos en ti');
+  par(p.eres+' Tu toque de '+q.n+' '+q.toque);
+  h2('Tu mezcla');
+  ORDEN.slice().sort(function(a,b){return r.pct[b]-r.pct[a]}).forEach(function(k){
+    doc.setFont('helvetica','bold');doc.setFontSize(11);tinta(INK);doc.text(P[k].n,M,y);
+    relleno(HI);doc.roundedRect(M+80,y-10,CW-130,12,6,6,'F');var c=rgb(P[k].c);relleno(c);doc.roundedRect(M+80,y-10,Math.max(12,(CW-130)*r.pct[k]/100),12,6,6,'F');
+    doc.text(r.pct[k]+'%',W-M,y,{align:'right'});y+=24});
+  y+=10;h2('Tus fortalezas');lista(p.fuerzas.map(function(f){return f+'.'}));
+  if(r.altas.length){h2('Lo que dijiste de ti');lista(r.altas.map(function(f){return '"'+f+'"'}))}
+  caja('Tu superpoder',p.sup+' Tu regla de trabajo: '+p.regla);
+  caja('Tu punto ciego',p.ciego+' Qué hacer: '+p.cuida);
+  caja('Lo que te toca reforzar: '+P[r.baja].n,P[r.baja].refuerzo+(r.bajas.length?' Dijiste que esto se parece poco a ti: "'+r.bajas[0]+'"':''));
+
+  /* Qué vender */
+  nueva('Qué podrías vender');
+  par('Tu foco ahora es '+e.foco+'. Estas opciones encajan con tu perfil. Elige una para empezar.');
+  p.vende.forEach(function(v){par(v[0],{b:true,s:13,g:2});par(v[1])});
+  par('Una idea por tu toque de '+q.n+': '+q.vende[0][0]+'.',{b:true,s:13,g:2});par(q.vende[0][1]);
+  h2('Antes de decidir, responde estas tres preguntas');
+  ['¿Alguien paga hoy por resolver este problema?','¿Te queda ganancia después de todos los costos?','¿Puedes explicar tu oferta en una sola frase?'].forEach(function(t){chequeo(t)});
+  y+=6;h2('Tu socio ideal: '+soc.n);par('Alguien con este perfil '+p.socioD+' Busca a esa persona entre tus contactos o en Nexxa Expo.');
+
+  /* 30 días */
+  nueva('Tus primeros 30 días');
+  par('Marca cada tarea cuando la termines. Cada semana tiene una meta sencilla.');
+  e.sem.forEach(function(w,i){
+    cabe(150);doc.setFont('helvetica','bold');doc.setFontSize(14);tinta(INK);doc.text('Semana '+(i+1)+': '+w[0],M,y);y+=17;
+    par(fs[i]+'. Meta: '+w[1],{s:10.5,c:GR,g:6});
+    w[2].forEach(function(t){chequeo(t)});
+    chequeo('Para tu perfil '+p.n+': '+p.tareas[i],true);y+=10;
+  });
+
+  /* 90 días y cuentas */
+  nueva('Del día 31 al 90');
+  h2('Días 31 a 60');e.m2.forEach(function(t){chequeo(t)});y+=8;
+  h2('Días 61 a 90');e.m3.forEach(function(t){chequeo(t)});y+=10;
+  h2('Tu hoja de cuentas');
+  par('Usa esta cuenta para cada producto o servicio. El ejemplo es solo una guía y no es un resultado esperado.');
+  var filas=[['Precio de venta','$ 89.000'],['Costo del producto','- $ 35.000'],['Envío','- $ 14.000'],['Publicidad por venta','- $ 15.000'],['Devoluciones','- $ 5.000'],['Lo que te queda','$ 20.000']];
+  cabe(180);var cx=[M+12,M+250,M+370];
+  relleno(EL);doc.rect(M,y-14,CW,24,'F');tinta(BL);doc.setFont('helvetica','bold');doc.setFontSize(10.5);doc.text('Concepto',cx[0],y+2);doc.text('Ejemplo',cx[1],y+2);doc.text('Tus números',cx[2],y+2);y+=24;
+  filas.forEach(function(f,i){var u=i===filas.length-1;if(u||i%2===1){relleno(HI);doc.rect(M,y-14,CW,24,'F')}tinta(INK);doc.setFont('helvetica',u?'bold':'normal');doc.text(f[0],cx[0],y+2);doc.text(f[1],cx[1],y+2);y+=24});
+
+  /* Evento */
+  nueva('Tu paso por Nexxa Expo');
+  par('Viernes 20 de noviembre de 2026, 3:00 a 8:00 p. m. Auditorio principal de la Institución Universitaria Salazar y Herrera, Carrera 70 # 52-49, Los Colores, Medellín. Requiere registro previo y el cupo del auditorio es limitado. También puedes seguirlo por Facebook, Instagram y YouTube.');
+  h2('Las preguntas que debes llevar');
+  PONENCIAS.forEach(function(c){var tuya=c[0]===p.charla;par(c[0]+(tuya?' (tu charla clave)':''),{b:true,g:1});par(c[1],{c:tuya?INK:GR})});
+  caja('Tu tarea en el evento','Busca a una persona con perfil '+soc.n+' y cuéntale tu plan en una frase: quién es tu cliente y qué le vas a ofrecer.');
+  caja('Laboratorio de Meta Ads','La etapa 1 del laboratorio virtual no tiene costo. Consulta la fecha en '+CONFIG.sitio+'.');
+  par('Inscríbete en '+CONFIG.sitio,{b:true,s:13});
+  par('Este plan es una orientación creada a partir de tus respuestas. No es asesoría profesional ni garantiza ventas o ingresos. Revisa tus números antes de invertir.',{s:9.5,c:GR});
+  pie();
+  return doc.output('blob');
+}
+})();
+</script>
+
+</body></html>

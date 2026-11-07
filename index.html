@@ -537,7 +537,7 @@ if(!reduce)gsap.from('#heroDate',{y:20,opacity:0,duration:1,delay:.6,ease:'power
 const hero=gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
 let vel=0;ScrollTrigger.create({start:0,end:'max',onUpdate:s=>{vel=Math.min(1,Math.abs(s.getVelocity())/2500);}});
 (function decay(){warp+= (vel-warp)*.08;vel*=.9;requestAnimationFrame(decay);})();
-hero.to('#logoStage',{scale:3.2,opacity:0,ease:'power2.in'},0).to('#heroDate,#hint,#heroKick,#cd',{y:-60,opacity:0},0).to('.floor',{opacity:0,yPercent:30},0);
+hero.fromTo('#logoStage',{scale:1,opacity:1},{scale:3.2,opacity:0,ease:'power2.in',immediateRender:false},0).fromTo('#heroDate,#hint,#heroKick,#cd',{y:0,opacity:1},{y:-60,opacity:0,immediateRender:false},0).to('.floor',{opacity:0,yPercent:30},0);
 
 /* 2. Manifiesto: las palabras se encienden */
 const words=gsap.utils.toArray('#mText .w');

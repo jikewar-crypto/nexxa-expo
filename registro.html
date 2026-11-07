@@ -1211,10 +1211,18 @@ body.tb-on .test-bubble{opacity:1;transform:none;pointer-events:auto;animation:t
 body.on-registro .test-bubble,body.tb-hidden .test-bubble{opacity:0!important;pointer-events:none!important;transform:translateY(24px) scale(.9)!important}
 @media (max-width:560px){.tb-txt small{display:none}.tb-txt b{font-size:15px}.tb-ico{width:38px;height:38px}}
 @media (prefers-reduced-motion:reduce){body.tb-on .test-bubble,.tb-ico::after{animation:none}}
+/* Modo solo registro: llega desde la portada con #registro o #laboratorio */
+.tb-back{display:none}
+body.solo .hero,body.solo nav.tabs,body.solo .tb-info,body.solo .tb-act{display:none!important}
+body.solo .tb-back{display:inline-flex;align-items:center;gap:8px;margin-left:auto;padding:10px 16px;border-radius:999px;border:1px solid rgba(25,227,248,.45);color:#fff;text-decoration:none;font-weight:700;font-size:15px;background:rgba(25,227,248,.08)}
+body.solo .tb-back:hover{background:rgba(25,227,248,.18)}
+body.solo .tb-back svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+body.solo #main{padding-top:clamp(18px,4vw,40px)}
 </style>
 
 </head>
 <body>
+<script>if(/^#(registro|laboratorio)$/.test(location.hash)&&!/[?&]verificar=/.test(location.search))document.body.classList.add('solo');</script>
 <canvas id="sparks" aria-hidden="true"></canvas>
 <a class="test-bubble" id="testBubble" href="test.html" aria-label="Hacer el test: ¿qué tipo de emprendedor eres?">
   <span class="tb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8v.5"/><circle cx="12" cy="17.2" r=".6"/><circle cx="12" cy="12" r="9.5"/></svg></span>
@@ -1223,9 +1231,9 @@ body.on-registro .test-bubble,body.tb-hidden .test-bubble{opacity:0!important;po
 </a>
 <div class="topbar" id="topbar">
   <div class="wrap tb-in">
-    <a class="tb-logo" href="#evento" aria-label="Nexxa Expo · inicio"><img src="expo-logo.png" alt="Nexxa Expo by Impulso" width="840" height="263"></a>
+    <a class="tb-logo" href="#evento" id="tbLogo" aria-label="Nexxa Expo · inicio"><img src="expo-logo.png" alt="Nexxa Expo by Impulso" width="840" height="263"></a>
     <div class="tb-info"><span><b>Vie 20 nov</b> · 2:30 p. m.</span><span class="tb-cupo"><i></i>Quedan <b id="tbCupo">200</b> cupos</span></div>
-    <div class="tb-act"><a class="tb-lab tb-test" href="test.html">Test: ¿qué emprendedor eres?</a><button class="tb-lab" type="button" data-go-lab>Laboratorio Meta Ads · opcional</button><button class="tb-reg" type="button" data-go-reg><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Regístrate aquí</span></button></div>
+    <a class="tb-back" href="https://nexxaexpo2026.online/"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Volver a la portada</a><div class="tb-act"><a class="tb-lab tb-test" href="test.html">Test: ¿qué emprendedor eres?</a><button class="tb-lab" type="button" data-go-lab>Laboratorio Meta Ads · opcional</button><button class="tb-reg" type="button" data-go-reg><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Regístrate aquí</span></button></div>
   </div>
 </div>
 <header class="hero">
@@ -1602,7 +1610,7 @@ body.on-registro .test-bubble,body.tb-hidden .test-bubble{opacity:0!important;po
 
 </main>
 
-<script>window.__h0=location.hash;</script>
+<script>window.__h0=location.hash;['pointerdown','keydown'].forEach(function(e){addEventListener(e,function(){window.__soloOK=1;},{once:true,capture:true});});if(document.body.classList.contains('solo')){var L=document.getElementById('tbLogo');if(L){L.href='https://nexxaexpo2026.online/';L.setAttribute('aria-label','Volver a la portada de Nexxa Expo');}}</script>
 <script>
 /* ================= REGISTRO EN GOOGLE SHEETS (sitio público) ================= */
 /* Pega aquí la URL de la aplicación web de Apps Script (termina en /exec) */
@@ -1900,6 +1908,7 @@ const TAB_ICO={evento:'<path d="M12 3l2.4 5.6 6 .6-4.6 4 1.4 5.9L12 16l-5.2 3.1 
 TABS.forEach(([id,label])=>{const b=document.createElement('button');b.className='tab'+(id==='registro'?' tab-reg':'');b.type='button';b.setAttribute('role','tab');b.id='t-'+id;b.setAttribute('aria-controls','p-'+id);
   b.innerHTML=`<svg class="ti" viewBox="0 0 24 24" aria-hidden="true">${TAB_ICO[id]||''}</svg><span class="tab-lbl">${label}</span>`;b.addEventListener('click',()=>openTab(id,true));tl.appendChild(b);});
 function openTab(id,scroll){if(!TABS.some(t=>t[0]===id))id='evento';
+  if(id!=='registro'&&window.__soloOK)document.body.classList.remove('solo');
   TABS.forEach(([t])=>{const on=t===id;const b=$('#t-'+t);if(b)b.setAttribute('aria-selected',String(on));$('#p-'+t).hidden=!on;});
   document.body.classList.toggle('on-registro',id==='registro');
   try{history.replaceState(null,'','#'+id);}catch(e){}
